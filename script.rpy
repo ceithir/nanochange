@@ -46,4 +46,8 @@ label start:
     The mysterious man, named* Mephisto°, is a faithful customer, and someone in the staff had his number. He has answered positively to the gentle but firm request to come at the station for questioning.
     """
 
+    "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
+
+    "Which one do I want to relieve first?"
+
     return
