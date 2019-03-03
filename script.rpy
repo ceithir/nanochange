@@ -1,4 +1,4 @@
-﻿# Main script file, to be split later on if need be
+# Main script file, to be split later on if need be
 
 define d = Character("The Devil")
 define o = Character("Officer")
@@ -21,7 +21,7 @@ label start:
 
     Death after consumption was pretty quick due to the victim already being alcoholized at that time and drugs and alcohol violently reacting together.
 
-    Analysis of the liver seems to indicate the victim was a alcoholic°. Probable* use of a heavy hepatic-support program, and therefore of few or none other programs*.
+    Analysis of the liver seems to indicate the victim was a alcoholic°. Probable* use of a heavy hepatic-support program°, and therefore of few or none other programs*.
 
     {clear}
 
@@ -70,12 +70,16 @@ label anna_introduction:
     jump anna_questions
 
 default anna_testimony = False
+default anna_outis = False
 
 label anna_questions:
     menu:
         "Tell me what happened." if not anna_testimony:
             $ anna_testimony = True
             jump anna_testimony
+        "What can you tell me about Outis." if anna_testimony and not anna_outis:
+            $ anna_outis = True
+            jump anna_outis
         "No more questions.":
             jump choose_your_suspect
 
@@ -112,6 +116,27 @@ label anna_testimony:
     I think the medics stormed in, then the cops. My mind's a blur. Everyone was asking me questions, and I couldn't answer any of them.
 
     And then, I ended up here, in this dark room, with you.
+    """
+
+    jump anna_questions
+
+label anna_outis:
+    a """
+    There's not much I can tell you about this guy.
+
+    I saw him for the first time about one month ago. Perhaps two actually. Time flies.
+
+    After that, he came back about twice a week. Always ordering the coffee that was {i}à la mode{/i}.
+
+    Often, he'll just drink it quickly. Sometimes, he would go for a quick chat with Mephisto°.
+
+    Mephisto is that guy who's so often there we start worrying about his well-being when he doesn't show up for a few days.
+
+    As for the elephant into the room… Yeah, the guy clearly had a problem with alcohol. He was more often than not smelling of it.
+
+    Never actually ordered anything alcoholic in the café though. I think he was trying to hide his addiction.
+
+    Probably was using mods to keep his mind clear, as he didn't act like a drunk man°.
     """
 
     jump anna_questions
