@@ -71,15 +71,22 @@ label anna_introduction:
 
 default anna_testimony = False
 default anna_outis = False
+default anna_zelda = False
+
+default know_outis_name = False
 
 label anna_questions:
     menu:
         "Tell me what happened." if not anna_testimony:
             $ anna_testimony = True
+            $ know_outis_name = True
             jump anna_testimony
-        "What can you tell me about Outis." if anna_testimony and not anna_outis:
+        "What can you tell me about Outis?" if know_outis_name and not anna_outis:
             $ anna_outis = True
             jump anna_outis
+        "What can you tell me about Zelda?" if know_outis_name and not anna_zelda:
+            $ anna_zelda = True
+            jump anna_zelda
         "No more questions.":
             jump choose_your_suspect
 
@@ -137,6 +144,39 @@ label anna_outis:
     Never actually ordered anything alcoholic in the café though. I think he was trying to hide his addiction.
 
     Probably was using mods to keep his mind clear, as he didn't act like a drunk man°.
+    """
+
+    d "Was he acting any different today from any other day?"
+
+    a """
+    Well, he had a girl with him. That's unusual enough. Though they didn't seem very close.
+
+    I think he was wearing some extra perfume too. Maybe to turn on the charm, maybe to hide his usual wine smell.
+
+    And I think that's all. Until the accident, everything else seemed as usual.
+    """
+
+    jump anna_questions
+
+label anna_zelda:
+    a "Who?"
+
+    d "The girl that was with Outis."
+
+    a "Today was the first time I've seen her."
+
+    d "Well, then tell me what you've learned about her today."
+
+    a """
+    Well, she looks like an artist I guess? We're not the most hipster of cafés, but we do get some from time to time.
+
+    She arrived early in the morning, ordered a simple coffee, then used her computer, alone at her table, for like half an hour before Outis arrived.
+
+    She waved at him, and he went to join her. They discussed for some time without ordering anything more, then Outis came to the counter to ask for a coffee, and returned quickly to his seat.
+
+    She came herself soon after, asked for a refill, did some small talk about the weather while she waited, and went back to their table with both cups.
+
+    Overall, they looked more like they were negotiating than flirting.
     """
 
     jump anna_questions
