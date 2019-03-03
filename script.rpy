@@ -2,9 +2,9 @@
 
 define d = Character("The Devil")
 define o = Character("Officer")
+define a = Character("Anna")
 
 label start:
-
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
     o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be there today actually."
     d "That means I'm going to get all the worst cases, ain't I?"
@@ -50,4 +50,71 @@ label start:
 
     "Which one do I want to relieve first?"
 
+    jump choose_your_suspect
+
+default anna_introduction = False
+
+label choose_your_suspect:
+    menu:
+        "Anna the employee":
+            if not anna_introduction:
+                $ anna_introduction = True
+                jump anna_introduction
+            else:
+                jump anna_questions
+        "EXIT":
+            jump debug_exit
+
+label anna_introduction:
+    "To do after character design is done"
+    jump anna_questions
+
+default anna_testimony = False
+
+label anna_questions:
+    menu:
+        "Tell me what happened." if not anna_testimony:
+            $ anna_testimony = True
+            jump anna_testimony
+        "No more questions.":
+            jump choose_your_suspect
+
+    jump choose_your_suspect
+
+label anna_testimony:
+    a """
+    It was a slow day at work. Far less people than usual.
+
+    You see, our usual customers are mainly people working nearby. But, with the snowstorm, they couldn't make it to work today. No work, no coffee before work.
+
+    So, for most of the morning, they were more employees than customers in the shop, and everything was quiet.
+
+    At some point, that guy came in. A semi-regular. Not here everyday, but comes frequently enough that I remember his face. Uses the alias Outis°.
+
+    He asked for the flavor of the week, a Dark Latte Americano.
+
+    The right machine hadn't been booted yet, so it took me a bit of time to prepare his order. Like five, maybe ten minutes?
+
+    Didn't really check. As I said, the atmosphere was distressed. People took their time, nobody wanted to return into the cold fast.
+
+    So, the girl he was with came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and waited at the counter while I made it.
+
+    She went back to their table with both cups, I went back to dozing off.
+
+    And then, he collapsed from his chair. Everyone rushed in. He was breathing very badly, suffocating. I tried to help him. Sam, the one in charge that day, called the emergency services, but neither I nor they could do anything.
+
+    He just died, there, in my arms.
+    """
+
+    d "And what happened after?"
+
+    a """
+    I think the medics stormed in, then the cops. My mind's a blur. Everyone was asking me questions, and I couldn't answer any of them.
+
+    And then, I ended up here, in this dark room, with you.
+    """
+
+    jump anna_questions
+
+label debug_exit:
     return
