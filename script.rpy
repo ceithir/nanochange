@@ -72,6 +72,7 @@ label anna_introduction:
 default anna_testimony = False
 default anna_outis = False
 default anna_zelda = False
+default anna_mephisto = False
 
 default know_outis_name = False
 
@@ -87,6 +88,9 @@ label anna_questions:
         "What can you tell me about Zelda?" if know_outis_name and not anna_zelda:
             $ anna_zelda = True
             jump anna_zelda
+        "What can you tell me about Mephisto?" if know_outis_name and not anna_mephisto:
+            $ anna_mephisto = True
+            jump anna_mephisto
         "No more questions.":
             jump choose_your_suspect
 
@@ -177,6 +181,69 @@ label anna_zelda:
     She came herself soon after, asked for a refill, did some small talk about the weather while she waited, and went back to their table with both cups.
 
     Overall, they looked more like they were negotiating than flirting.
+    """
+
+    jump anna_questions
+
+label anna_mephisto:
+    a """
+    Mephisto is not there everyday, but it's as if.
+
+    I think the café is his more or less his public office. Some people come just to speak to him.
+    """
+
+    d "Which kind of people?"
+
+    a """
+    Of all kinds actually. He's got quite the varied following. People of all ages, genders, colors.
+
+    Though, thinking about it, I never saw anyone which looked like they had difficult ends of months discuss with him for long.
+    """
+
+    d "And for which reason was he that popular with the {i}bourgeoisie{/i}?"
+
+    "I can see the cogs in her brain turn as she's trying to formulate a non-suspicious answer. May as well cut short her circumlocutions."
+
+    d "Is he a dealer?"
+
+    "She's taken aback for a second, then answers bluntly."
+
+    a "No. But he is a biohacker*°."
+
+    """
+    I nod in understanding.
+
+    Biohackers are in the gray zone of the law. What they do is technically illegal, but they're tolerated as long as they keep a plausible cover.
+
+    It's all a consequence of that good old Pulcinella Law°.
+    """
+
+    d "Did he have an agreement with the shop?"
+
+    a """
+    More or less. We didn't ask questions, and he left generous tips.
+
+    Had he brought disputable clients, maybe things would have been different. But his customer base was clean enough.
+    """
+
+    d "Do you know what services he offers exactly?"
+
+    a "No. Curiosity killed the cat."
+
+    d "And how was he acting today?"
+
+    a """
+    At the beginning, as usual, working on his computer on his usual seat.
+
+    I remember finding very strange that he went to talk to Outis. Normally, he let people come to him, and never meddle with the other tables.
+
+    And I found even stranger that he left immediately after. Usually, he stays in most of the day.
+    """
+
+    d "You're suspecting him, ain't you?"
+
+    a """
+    Wouldn't anyone? Though we thought he was harmless, he is an outlaw after all.
     """
 
     jump anna_questions
