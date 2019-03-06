@@ -4,6 +4,7 @@ define d = Character("The Devil")
 define o = Character("Officer")
 define a = Character("Anna")
 define m = Character("Mephisto")
+define z = Character("Zelda")
 
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
@@ -55,6 +56,7 @@ label start:
 
 default anna_introduction = False
 default mephisto_introduction = False
+default zelda_introduction = False
 
 menu choose_your_suspect:
     "Anna the employee":
@@ -69,6 +71,12 @@ menu choose_your_suspect:
             jump mephisto_introduction
         else:
             jump mephisto_questions
+    "Zelda the customer":
+        if not zelda_introduction:
+            $ zelda_introduction = True
+            jump zelda_introduction
+        else:
+            jump zelda_questions
     "EXIT":
         jump debug_exit
 
@@ -78,6 +86,8 @@ label anna_introduction:
 
 default know_outis_name = False
 default know_mephisto_job = False
+default know_outis_query = False
+default know_zelda_job = False
 
 default anna_testimony = False
 default anna_outis = False
@@ -89,13 +99,13 @@ menu anna_questions:
         $ anna_testimony = True
         $ know_outis_name = True
         jump anna_testimony
-    "What can you tell me about Outis?" if know_outis_name and not anna_outis:
+    "What can you tell me about Outis?" if anna_testimony and not anna_outis:
         $ anna_outis = True
         jump anna_outis
-    "What can you tell me about Zelda?" if know_outis_name and not anna_zelda:
+    "What can you tell me about Zelda?" if anna_testimony and not anna_zelda:
         $ anna_zelda = True
         jump anna_zelda
-    "What can you tell me about Mephisto?" if know_outis_name and not anna_mephisto:
+    "What can you tell me about Mephisto?" if anna_testimony and not anna_mephisto:
         $ anna_mephisto = True
         $ know_mephisto_job = True
         jump anna_mephisto
@@ -267,6 +277,7 @@ menu mephisto_questions:
         jump mephisto_testimony
     "Let's talk about your daily activities." if mephisto_testimony and know_mephisto_job and not mephisto_job:
         $ mephisto_job = True
+        $ know_outis_query = True
         jump mephisto_job
     "No more questions.":
         jump choose_your_suspect
@@ -342,6 +353,52 @@ label mephisto_job:
     """
 
     jump mephisto_questions
+
+label zelda_introduction:
+    "To do after character design is done"
+    jump zelda_questions
+
+default zelda_testimony = False
+
+menu zelda_questions:
+    "Tell me what happened." if not zelda_testimony:
+        $ zelda_testimony = True
+        $ know_zelda_job = True
+        $ know_outis_name = True
+        jump zelda_testimony
+    "No more questions.":
+        jump choose_your_suspect
+
+label zelda_testimony:
+    z """
+    I think it all started last Tuesday.
+
+    I was working on my personal projects when I received a message about a potential commission, from a person using the alias Outis*.
+
+    He wanted a realistic portrait. Not necessarily my forte, but I wasn't going to refuse a paid gig.
+
+    As his requirements were complex, and we were living in the same city, I agreed, perhaps foolishly, to meet him face to face to discuss the matter further.
+
+    Fast forward to this morning. I'm early, he's not, I'm getting some paperwork done while enjoying a cup of coffee.
+
+    Finally, he comes in, salutes me, orders a coffee, and we get to talk about his project.
+
+    Soon, his coffee is ready, I go fetch it, and a new one for myself while I'm at it.
+
+    I'm barely back that another customer walks straight to us, and starts arguing crassly with Outis. He answers similarly, and the man runs away in rage.
+
+    I'll never know what this was all about, as Outis then drank his coffee, and Hell's gates opened.
+
+    I guess you already saw men dying in your line of duty. Me never before this day. That was even more horrible than anything I could have imagined.
+
+    He looked sick, then in pain, then he felt from his seat. People tried to help him, but life just slowly exited his body a bit more with each passing instant.
+
+    I cannot describe it with words. I haven't known this man for more than a few minutes, so I didn't really feel grief.
+
+    But the swiftness with which death took him away… That's some terrifying shit for sure.
+    """
+
+    jump zelda_questions
 
 label debug_exit:
     return
