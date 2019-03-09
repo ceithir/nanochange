@@ -4,6 +4,7 @@ label zelda_introduction:
 
 default zelda_testimony = False
 default zelda_drawings = False
+default zelda_identity_tracking = False
 
 menu zelda_questions:
     "Tell me what happened." if not zelda_testimony:
@@ -15,6 +16,9 @@ menu zelda_questions:
         $ zelda_drawings = True
         $ seen_drawings = True
         jump zelda_drawings
+    "Ever wondered about Outis' motives?" if know_outis_job and not zelda_identity_tracking:
+        $ zelda_identity_tracking = True
+        jump zelda_identity_tracking
     "No more questions.":
         jump choose_your_suspect
 
@@ -78,5 +82,21 @@ label zelda_drawings:
 
     jump zelda_questions
 
+label zelda_identity_tracking:
+    z "Oh, I think he was a facade for a rich girl wanting to know beforehand what she would like after a full makeover."
+
+    d "Do you believe that?"
+
+    z "Not strongly. But as long as I have at least one innocent explanation available, I can accept that kind of job without my conscience ringing too strongly."
+
+    d "And what are your less innocent theories?"
+
+    z "When someone asks for what is basically a facial composite, I tend to get the idea they are trying to catch someone."
+
+    d "And what's your opinion on identity trackers then?"
+
+    z "Everyone got to make a living. Blame capitalism, not me."
+
+    jump zelda_questions
 
 

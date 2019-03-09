@@ -5,6 +5,7 @@ label mephisto_introduction:
 
 default mephisto_testimony = False
 default mephisto_job = False
+default mephisto_identity_tracking = False
 
 menu mephisto_questions:
     "Tell me what happened." if not mephisto_testimony:
@@ -14,6 +15,9 @@ menu mephisto_questions:
         $ mephisto_job = True
         $ know_outis_query = True
         jump mephisto_job
+    "Ever met an identity tracker?" if know_outis_job and not mephisto_identity_tracking:
+        $ mephisto_identity_tracking = True
+        jump mephisto_identity_tracking
     "No more questions.":
         jump choose_your_suspect
 
@@ -88,3 +92,31 @@ label mephisto_job:
     """
 
     jump mephisto_questions
+
+label mephisto_identity_tracking:
+    "He instantly tenses up."
+
+    m """
+    Being compromised with an identity tracker is one of my worst nightmares.
+
+    You see, what most of my clients want above all is discretion. They really don't like the idea of anyone they don't know being aware of even their most minor or obvious transformations.
+
+    And being associated with an identity tracker is basically telling the whole world that you're a greedy secret-seller.
+    """
+
+    d "Some must have approach you through the years."
+
+    m "Of course. It's part of my job to to make it clear I won't ever work with them."
+
+    d "What about Outis?"
+
+    m """
+    Do you have information that I don't have?
+
+    But, yes, I was having doubts about him. He played the scholar quite well, but as of late, I found some of his questions far too much oriented.
+
+    Actually, he stopped paying me about the time I started being more prudent in my words around him. Dunno if that's evidence against or in favor of him.
+    """
+
+    jump mephisto_questions
+
