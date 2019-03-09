@@ -3,6 +3,7 @@ label zelda_introduction:
     jump zelda_questions
 
 default zelda_testimony = False
+default zelda_drawings = False
 
 menu zelda_questions:
     "Tell me what happened." if not zelda_testimony:
@@ -10,6 +11,10 @@ menu zelda_questions:
         $ know_zelda_job = True
         $ know_outis_name = True
         jump zelda_testimony
+    "Tell me more about Outis job proposal." if zelda_testimony and not zelda_drawings:
+        $ zelda_drawings = True
+        $ seen_drawings = True
+        jump zelda_drawings
     "No more questions.":
         jump choose_your_suspect
 
@@ -43,4 +48,35 @@ label zelda_testimony:
     """
 
     jump zelda_questions
+
+label zelda_drawings:
+    z """
+    He provided me with a set of photos of some person, and asked me to imagine, and draw, what they would look like with a few more years, different hair and eye color, alternative skin tone, subtle changes in bone structure etc.
+
+    It was all very strict. He had made several lists, each with a precise combination of transformations that he wanted to see applied.
+    """
+
+    d "And what did the results looked like?"
+
+    z "Nothing like anyone I know, and nothing like anyone that was in the café today, if that's what you want to know. I have some of the sketches with me if you want to see them."
+
+    d "Please do. Any hint can be relevant."
+
+    # Transition
+
+    """
+    The half-dozen of rough drawings show unknown, but surprisingly diverse, visages.
+
+    Facial features are heavily different from one image to the next, a full gradient from smoothness to hardness, light to dark.
+
+    There's also a photo, from what looks like a posh long-haired highschooler.
+    """
+
+    d "Are they all supposed to be slight variations of the same girl?"
+
+    z "Yeah. All the changes were minor, but the lists were very long."
+
+    jump zelda_questions
+
+
 

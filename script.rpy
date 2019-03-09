@@ -60,7 +60,8 @@ default know_outis_name = False
 default know_mephisto_job = False
 default know_outis_query = False
 default know_zelda_job = False
-default seen_drawing = False
+default seen_drawings = False
+default know_outis_job = False
 
 menu choose_your_suspect:
     "Anna the employee":
@@ -81,8 +82,48 @@ menu choose_your_suspect:
             jump zelda_introduction
         else:
             jump zelda_questions
-    "EXIT":
+    "THINK (debug)":
+        jump deductions
+    "EXIT (debug)":
         jump debug_exit
+
+menu deductions:
+    "Reshaping + Drawings" if know_outis_query and seen_drawings and not know_outis_job:
+        $ know_outis_job = True
+        jump identity_tracker_reveal
+    "Nothing for now":
+        jump choose_your_suspect
+
+label identity_tracker_reveal:
+    """
+    So…
+
+    Asking in-depth questions about deep nanoreshaping…
+
+    Commissioning artistic visions of what someone could look like after very specific series of transformations…
+
+    Seems like the victim was trying to determine the current appearance of someone having undergone an integral transformation.
+
+    In other words, he was an identity tracker*°.
+
+    What's the saying again?
+
+    {i}Among the muckrakers, no one is hated as much as the identity tracker{/i}?
+
+    {i}In the renaissance age of privacy, the identity tracker is a sin of the past sniffing out past sins{/i}?
+
+    Nevertheless, the answer I'm trying to unearth is probably related to the victim's occupation.
+
+    And maybe to who he was was he trying to found. And why.
+
+    He could have been an independent tracker, searching for some lucrative scandal. In that case, the girl in the photo should be famous, rich, or from a famous or rich family.
+
+    But he could as well be working under contract. Finding track of someone someone else has lost sight of against a great deal of money.
+
+    And in your line of duty, the sponsor of such searches if more often than not a mafioso seeking for a bad payer or a traitor to the family.
+    """
+
+    jump choose_your_suspect
 
 label debug_exit:
     return
