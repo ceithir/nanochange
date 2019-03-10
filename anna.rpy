@@ -2,6 +2,7 @@ default anna_testimony = False
 default anna_outis = False
 default anna_zelda = False
 default anna_mephisto = False
+default anna_outis_2 = False
 
 label anna_introduction:
     "To do after character design is done"
@@ -22,6 +23,10 @@ menu anna_questions:
         $ anna_mephisto = True
         $ know_mephisto_job = True
         jump anna_mephisto
+    "Did you have a fight with Outis?" if anna_outis and not anna_outis_2 and know_anna_talked_to_outis:
+        $ anna_outis_2 = True
+        $ anna_name = True
+        jump anna_outis_2
     "No more questions.":
         jump choose_your_suspect
 
@@ -176,3 +181,21 @@ label anna_mephisto:
     """
 
     jump anna_questions
+
+label anna_outis_2:
+    a "I wouldn't call it a fight. Guy wanted to know more about me, I said I wasn't interested, he insisted, I may have spoken a little louder than I wanted too."
+
+    d "Once?"
+
+    a """
+    Maybe twice. Or thrice.
+
+    But you know, it's still all too usual to receive unwanted attention from customers. Usually, I'm just better at handling such interactions.
+    """
+
+    d "What did he said or tried to do that ended up blowing your fuse?"
+
+    a "He was very inquisitive, trying to pry into my private life. And he called me by whatever name crossed his mind at the moment, instead of the one on my tag."
+
+    jump anna_questions
+

@@ -5,6 +5,7 @@ label zelda_introduction:
 default zelda_testimony = False
 default zelda_drawings = False
 default zelda_identity_tracking = False
+default zelda_anna = False
 
 menu zelda_questions:
     "Tell me what happened." if not zelda_testimony:
@@ -12,6 +13,9 @@ menu zelda_questions:
         $ know_zelda_job = True
         $ know_outis_name = True
         jump zelda_testimony
+    "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
+        $ zelda_anna = True
+        jump zelda_anna
     "Tell me more about Outis job proposal." if zelda_testimony and not zelda_drawings:
         $ zelda_drawings = True
         $ seen_drawings = True
@@ -99,4 +103,20 @@ label zelda_identity_tracking:
 
     jump zelda_questions
 
+label zelda_anna:
+    z "Not really. Average employees of an average shop."
+
+    d "Did you interact with any of them?"
+
+    z "Just the girl that made my coffee. We had a short yet deep philosophical discussion about how cold and how snowy it is."
+
+    d "Did she say or do anything special?"
+
+    z """
+    From what I could see, she did not put anything strange into Outis' coffee, nor did she do anything outstanding.
+
+    Frankly, I even remember finding her a bit bland.
+    """
+
+    jump zelda_questions
 

@@ -6,11 +6,17 @@ label mephisto_introduction:
 default mephisto_testimony = False
 default mephisto_job = False
 default mephisto_identity_tracking = False
+default mephisto_outis = False
 
 menu mephisto_questions:
     "Tell me what happened." if not mephisto_testimony:
         $ mephisto_testimony = True
         jump mephisto_testimony
+    "Tell me as much as you can about the victim." if mephisto_testimony and not mephisto_outis:
+        $ mephisto_outis = True
+        $ know_anna_talked_to_outis = True
+        $ know_outis_name = True
+        jump mephisto_outis
     "Let's talk about your daily activities." if mephisto_testimony and know_mephisto_job and not mephisto_job:
         $ mephisto_job = True
         $ know_outis_query = True
@@ -117,6 +123,23 @@ label mephisto_identity_tracking:
 
     Actually, he stopped paying me about the time I started being more prudent in my words around him. Dunno if that's evidence against or in favor of him.
     """
+
+    jump mephisto_questions
+
+label mephisto_outis:
+    m """
+    Outis has been an irregular customer for as of late. As far as I remember, he never came just for a coffee, but always to discuss rather professionally with someone. The café was more or less his meeting room.
+    """
+
+    d "What kind of business was he doing there?"
+
+    m """
+    Journalism or research I guess. I remember him conducting interviews more than more than once. But I didn't hear enough of these conversations to grasp their subjects, and I didn't pry.
+    """
+
+    d "Anything else you can remember? Any remarkable habit for instance?"
+
+    m "Well, I think he tried hitting on Anna a few times. At least, I remember her rebuffing him several times."
 
     jump mephisto_questions
 

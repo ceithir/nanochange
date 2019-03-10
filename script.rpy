@@ -62,6 +62,8 @@ default know_outis_query = False
 default know_zelda_job = False
 default seen_drawings = False
 default know_outis_job = False
+default know_anna_talked_to_outis = False
+default anna_name = False
 
 menu choose_your_suspect:
     "Anna the employee":
@@ -127,3 +129,4 @@ label identity_tracker_reveal:
 
 label debug_exit:
     return
+
