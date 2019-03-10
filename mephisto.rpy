@@ -7,6 +7,7 @@ default mephisto_testimony = False
 default mephisto_job = False
 default mephisto_identity_tracking = False
 default mephisto_outis = False
+default mephisto_photo = False
 
 menu mephisto_questions:
     "Tell me what happened." if not mephisto_testimony:
@@ -24,6 +25,8 @@ menu mephisto_questions:
     "Ever met an identity tracker?" if know_outis_job and not mephisto_identity_tracking:
         $ mephisto_identity_tracking = True
         jump mephisto_identity_tracking
+    "Show photo" if mephisto_testimony and seen_drawings and not mephisto_photo:
+        jump mephisto_photo
     "No more questions.":
         jump choose_your_suspect
 
@@ -140,6 +143,15 @@ label mephisto_outis:
     d "Anything else you can remember? Any remarkable habit for instance?"
 
     m "Well, I think he tried hitting on Anna a few times. At least, I remember her rebuffing him several times."
+
+    jump mephisto_questions
+
+label mephisto_photo:
+    d "Could not tell me who this is?"
+
+    "He stares at the photo for a full minute before answering."
+
+    d "Sorry, but no. Would love to have her as client though, cause she seems loaded."
 
     jump mephisto_questions
 

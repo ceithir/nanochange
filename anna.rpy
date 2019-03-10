@@ -3,6 +3,7 @@ default anna_outis = False
 default anna_zelda = False
 default anna_mephisto = False
 default anna_outis_2 = False
+default anna_photo = False
 
 label anna_introduction:
     "To do after character design is done"
@@ -27,6 +28,10 @@ menu anna_questions:
         $ anna_outis_2 = True
         $ anna_name = True
         jump anna_outis_2
+    "Show photo" if anna_testimony and seen_drawings and not anna_photo:
+        $ anna_photo = True
+        $ know_photo_girl = True
+        jump anna_photo
     "No more questions.":
         jump choose_your_suspect
 
@@ -196,6 +201,29 @@ label anna_outis_2:
     d "What did he said or tried to do that ended up blowing your fuse?"
 
     a "He was very inquisitive, trying to pry into my private life. And he called me by whatever name crossed his mind at the moment, instead of the one on my tag."
+
+    jump anna_questions
+
+label anna_photo:
+    d "Do you know who this is?"
+
+    "She blinks a few times at the picture."
+
+    a "Eh, yeah. That's Phoenix Doors. One of the Doors' children. Big money. Probably works at the family company today."
+
+    "The family name rings a bell. A quick search on your phone brings in a sharply-dressed young woman."
+
+    d "You've recognized her instantly from such an old photo."
+
+    a "She hasn't changed much as you can see."
+
+    "I must agree with her. After several years doing this job, you tend to take for granted people change skin twice a year, but that's far more true. A lot of people actually prefer to keep looking the same as long as possible."
+
+    d "Still, you've recognized her instantly from an old photo. That's impressive."
+
+    a "Well, we went to the same music school a long time ago."
+
+    "The Internet does confirm that the Doors' girl did take piano lessons at a prestigious, and expensive, {i}conservatoire{/i} as part of her studies."
 
     jump anna_questions
 
