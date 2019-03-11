@@ -6,6 +6,7 @@ default zelda_testimony = False
 default zelda_drawings = False
 default zelda_identity_tracking = False
 default zelda_anna = False
+default zelda_mephisto = False
 
 menu zelda_questions:
     "Tell me what happened." if not zelda_testimony:
@@ -16,6 +17,10 @@ menu zelda_questions:
     "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
         $ zelda_anna = True
         jump zelda_anna
+    "Let's focus on the person who disturbs your conversation." if zelda_testimony and not zelda_mephisto:
+        $ zelda_mephisto = True
+        $ heard_mephisto_betrayal = True
+        jump zelda_mephisto
     "Tell me more about Outis job proposal." if zelda_testimony and not zelda_drawings:
         $ zelda_drawings = True
         $ seen_drawings = True
@@ -117,6 +122,35 @@ label zelda_anna:
 
     Frankly, I even remember finding her a bit bland.
     """
+
+    jump zelda_questions
+
+label zelda_mephisto:
+    z """
+    I don't know if there is really anything I can add about that man.
+
+    He was there when I arrived, behind his computer, focused on his work.
+
+    I wondered if he could be Outis, but he did not match the description my client had sent me.
+
+    After that I forgot about his existence until the incident.
+    """
+
+    d "What did he say exactly?"
+
+    z "Bad words mainly. The lexical field was of lies, lack of honor, and breach of confidence."
+
+    d "He accused Outis of having betrayed his trust?"
+
+    z "Maybe. Was really hard to understand without context."
+
+    d "And what did Outis answer?"
+
+    z "He did not. He just asked impolitely of his accusatory to go somewhere else do something else."
+
+    d "And then?"
+
+    z "The man gave up and departed angrily."
 
     jump zelda_questions
 

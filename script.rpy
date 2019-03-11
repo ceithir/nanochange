@@ -66,6 +66,7 @@ default know_anna_talked_to_outis = False
 default anna_name = False
 default know_photo_girl = False
 default photo_inconsistency = False
+default heard_mephisto_betrayal = False
 
 menu choose_your_suspect:
     "Anna the employee":
