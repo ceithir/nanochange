@@ -4,6 +4,7 @@ default anna_zelda = False
 default anna_mephisto = False
 default anna_outis_2 = False
 default anna_photo = False
+default anna_scenery = False
 
 label anna_introduction:
     "To do after character design is done"
@@ -32,6 +33,10 @@ menu anna_questions:
         $ anna_photo = True
         $ know_photo_girl = True
         jump anna_photo
+    "Let's focus on the last minutes." if anna_testimony and not anna_scenery:
+        $ anna_scenery = True
+        $ know_mephisto_waited = True
+        jump anna_scenery
     "No more questions.":
         jump choose_your_suspect
 
@@ -54,6 +59,14 @@ label anna_testimony:
     So, the girl he was with came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and waited at the counter while I made it.
 
     She went back to their table with both cups, I went back to dozing off.
+
+    Soon after, Mephisto joined them, and they had a verbal fight.
+
+    They weren't exactly shouting through the whole room, so I didn't understand what they said, but it didn't sound nice.
+
+    It was shortly over though. Mephisto bade out before things escalated too far.
+
+    And then…
 
     And then, he collapsed from his chair. Everyone rushed in. He was breathing very badly, suffocating. I tried to help him. Sam, the one in charge that day, called the emergency services, but neither I nor they could do anything.
 
@@ -226,4 +239,37 @@ label anna_photo:
     "The Internet does confirm that the Doors' girl did take piano lessons at a prestigious, and expensive, {i}conservatoire{/i} as part of her studies."
 
     jump anna_questions
+
+label anna_scenery:
+    d "Let's say from the moment you finished preparing both coffees. At that time, where exactly in the café were Outis, Mephisto, Zelda and yourself?"
+
+    a """
+    I was behind the counter.
+
+    Zelda en route to hers and Outis' table.
+
+    Outis and Mephisto were both seated at their usual positions, just a few steps away, each minding his own business.
+    """
+
+    d "OK. How did those position evolve from that moment?"
+
+    a """
+    Mine didn't. Zelda sat at her table. Then Mephisto rose and closed the distance to Outis.
+
+    Not a minute later, he went out, almost in a straight line, with just a minimal detour to grab his stuff.
+
+    Then, end of the world. No idea who did what at that moment as it was utter chaos.
+    """
+
+    d "Let's go back a little. No one else crossed path with any of you four from the moment the coffee was pulled to the tragic end?"
+
+    a """
+    No. If that was an usual day, I wouldn't have been able to say that for sure: There's always someone else waiting at the bar on in the alleys.
+
+    But today, with so little people, each of them was really standing out, and I would have remember.
+    """
+
+    jump anna_questions
+
+
 

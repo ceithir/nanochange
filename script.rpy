@@ -67,6 +67,9 @@ default anna_name = False
 default know_photo_girl = False
 default photo_inconsistency = False
 default heard_mephisto_betrayal = False
+default know_mephisto_waited = False
+default heard_mephisto_request = False
+default mephisto_false_request = False
 
 menu choose_your_suspect:
     "Anna the employee":
@@ -99,6 +102,9 @@ menu deductions:
     "Identity tracker + Photo" if know_outis_job and know_photo_girl and not photo_inconsistency:
         $ photo_inconsistency = True
         jump photo_inconsistency
+    "Mephisto behavior + Mephisto testimony" if know_mephisto_waited and heard_mephisto_request and not mephisto_false_request:
+        $ mephisto_false_request = True
+        jump mephisto_false_request
     "Nothing for now":
         jump choose_your_suspect
 
@@ -131,14 +137,23 @@ label identity_tracker_reveal:
     And in your line of duty, the sponsor of such searches if more often than not a mafioso seeking for a bad payer or a traitor to the family.
     """
 
-    jump choose_your_suspect
+    jump deductions
 
 label photo_inconsistency:
     "You can never be 100% sure, but looks like the girl in the photo is indeed Phoenix Door."
 
     "A girl who never discarded her identity° at all. So why would an identity tracker focus his efforts on her."
 
-    jump choose_your_suspect
+    jump deductions
+
+label mephisto_false_request:
+    """
+    There's obviously something more to Mephisto's little scene.
+
+    He claims he just wanted to ask for his money, yet he waited patiently in his own corner while his debtor was alone at his table, before suddenly jumping to his throat just after he got his coffee.
+    """
+
+    jump deductions
 
 label debug_exit:
     return

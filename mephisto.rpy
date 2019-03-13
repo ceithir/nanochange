@@ -7,7 +7,9 @@ default mephisto_testimony = False
 default mephisto_job = False
 default mephisto_identity_tracking = False
 default mephisto_outis = False
+default mephisto_anna = False
 default mephisto_photo = False
+default mephisto_truer_motives = False
 
 menu mephisto_questions:
     "Tell me what happened." if not mephisto_testimony:
@@ -18,15 +20,22 @@ menu mephisto_questions:
         $ know_anna_talked_to_outis = True
         $ know_outis_name = True
         jump mephisto_outis
+    "What can you tell me about Anna?" if mephisto_testimony and not mephisto_anna:
+        $ mephisto_anna = True
+        jump mephisto_anna
     "Let's talk about your daily activities." if mephisto_testimony and know_mephisto_job and not mephisto_job:
         $ mephisto_job = True
         $ know_outis_query = True
+        $ heard_mephisto_excuse = True
         jump mephisto_job
     "Ever met an identity tracker?" if know_outis_job and not mephisto_identity_tracking:
         $ mephisto_identity_tracking = True
         jump mephisto_identity_tracking
     "Show photo" if mephisto_testimony and seen_drawings and not mephisto_photo:
         jump mephisto_photo
+    "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
+        $ mephisto_truer_motives = True
+        jump mephisto_truer_motives
     "No more questions.":
         jump choose_your_suspect
 
@@ -152,6 +161,74 @@ label mephisto_photo:
     "He stares at the photo for a full minute before answering."
 
     d "Sorry, but no. Would love to have her as client though, cause she seems loaded."
+
+    jump mephisto_questions
+
+label mephisto_anna:
+    m """
+    The serving girl?
+
+    I haven't interacted much with her, but from what I've seen, she's basically average.
+
+    I was already a regular when she got hired, about two years ago I would say. Does this job cause it pays at least part of the bills, and does it well enough, but it's no really a lifelong passion of her.
+
+    She's also often present at the café. I guess that's her main gig.
+    """
+
+    d "Nothing unusual at all?"
+
+    "He takes a minute to think about your question."
+
+    m """
+    Well, sometimes, I feel like she's trying a bit too hard to fit in.
+
+    For example, I once overheard a conversation between her and several of her colleagues where she was pretending to know about some popular band from ten years ago when it was painfully obvious she had no idea who they were.
+
+    Likewise, she used to occasionally employ some pretty uncommon Latin idioms, then turn red as if she had said something terrible when someone raised an eyebrow in surprise. She's updated her speech pattern to get ride of them entirely.
+    """
+
+    d "You're quite observant aren't you?"
+
+    m "Need to be for my job. Identifying bad clients early is a crucial part of it."
+
+    jump mephisto_questions
+
+label mephisto_truer_motives:
+    m "Wait?"
+
+    d "You didn't go to Outis when he entered the café. Nor did you while he was waiting alone. You only moved when he was about to drink his coffee."
+
+    m """
+    Oh. I can see how this may make me look suspicious.
+
+    But the truth is more bland than that. From my seat, I could overhear some parts of their conversation.
+
+    And, well, at that moment, Outis was dodging the issue of when he would pay her for her work.
+
+    That made my blood boil, so I jumped in to placate him as a the untrustworthy man he is.
+
+    He didn't really let me speak though, and quickly pushed me into true anger territory, a state in which I'm only able to babble pitifully.
+
+    So I fled, not exactly proud of myself.
+    """
+
+    d "What did he say to you?"
+
+    m """
+    He was quite aggressively pretending not to know me. The whole virtue outraged act. Threw in a few insults about my mental state.
+
+    Not very original, but quite efficient. Didn't know how to react at all except with anger.
+    """
+
+    d "Fine. But while we're at fixing your testimony, and now we've made clear you could hear what Zelda and Outis were saying, please tell me what they did say."
+
+    m """
+    I didn't hear {i}everything{/i}.
+
+    But, yeah, maybe I've heard some bits…
+
+    [TO BE CONTINUED]
+    """
 
     jump mephisto_questions
 
