@@ -4,6 +4,9 @@ define a = Character("Anna")
 define m = Character("Mephisto")
 define z = Character("Zelda")
 
+image bg soft_white = Solid("#F5F5F5")
+image bg black = Solid("#000")
+
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
     o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be there today actually."
@@ -11,8 +14,13 @@ label start:
     o "Indeed. First-degree murder. Here's the file. The suspects are already waiting for you in the interrogation room."
     d "Have pity of me and make them wait 10 more minutes, time to read that and get a coffee."
 
-    "The officer agrees, but I'm sadly forced to discard the second part of the plan. The old-school percolator is empty and I don't have time enough to prepare a new batch of hot liquid energy."
+    "The officer agrees, but I'm sadly forced to renounce to the second part of the plan. The old-school percolator is empty and I don't have enough time to prepare a new batch of hot liquid energy."
     "To add insult to my withdrawal symptoms, today's affair is coffee related. As in, someone got killed in a coffee shop."
+
+    window hide
+
+    scene bg soft_white with dissolve
+    nvl show dissolve
 
     nvl_narrator """
     Some guy°, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a high quantity of common medical drugs°.
@@ -41,10 +49,15 @@ label start:
 
     The same cannot be proved for any other person present at the shop that day. It's not totally impossible that someone else had such an opportunity, but there's no witness of it, so my dear colleagues have decided to focus their attention on those three.
 
+    {clear}
+
     Anna and Zelda have already been interrogated one time, through superficially, alongside every other present at the shop when the cops came in. They were then escorted here for a more thorough investigation.
 
     The mysterious man, named* Mephisto°, is a faithful customer, and someone in the staff had his number. He has answered positively to the gentle but firm request to come at the station for questioning.
     """
+
+    nvl hide dissolve
+    scene bg black with dissolve
 
     "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
 
