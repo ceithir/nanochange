@@ -1,3 +1,56 @@
+default show_notes = False
+
+screen notes():
+    tag notes
+    zorder 1
+    modal True
+
+    frame:
+        style_prefix "notes"
+        xsize 960
+        ysize 600
+        xalign 0.5
+        yalign 0.5
+        background Solid("#f2eecb")
+
+        vbox:
+            hbox:
+                yfill True
+                vbox:
+                    xsize 240
+                    text "The Victim" style "notes_title"
+                    if know_outis_name:
+                        text "Name: Outis"
+                    else:
+                        text "Name: ???"
+
+                vbox:
+                    xsize 240
+                    text "The Employee" style "notes_title"
+                    text "Name: Anna"
+
+                vbox:
+                    xsize 240
+                    text "The Regular" style "notes_title"
+                    text "Name: Mephisto"
+
+                vbox:
+                    xsize 240
+                    text "The Customer" style "notes_title"
+                    text "Name: Zelda"
+
+            textbutton "Close" action Hide("notes") at right
+
+style notes_text:
+    color "#000"
+
+style notes_vbox:
+    spacing 10
+
+style notes_title:
+    color "#8b0000"
+    xalign 0.5
+
 define d = Character("The Devil")
 define o = Character("Officer")
 define a = Character("Anna")
@@ -58,6 +111,8 @@ label start:
 
     nvl hide dissolve
     scene bg black with dissolve
+
+    $ show_notes = True
 
     "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
 
