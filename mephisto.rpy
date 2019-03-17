@@ -10,6 +10,7 @@ default mephisto_outis = False
 default mephisto_anna = False
 default mephisto_photo = False
 default mephisto_truer_motives = False
+default mephisto_latin = False
 
 menu mephisto_questions:
     "Tell me what happened." if not mephisto_testimony:
@@ -35,7 +36,13 @@ menu mephisto_questions:
         jump mephisto_photo
     "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
         $ mephisto_truer_motives = True
+        $ know_mephisto_heard_zelda = True
         jump mephisto_truer_motives
+    "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not mephisto_latin:
+        $ mephisto_latin = True
+        $ mephisto_disabled = True
+        $ mephisto_confession = True
+        jump mephisto_latin
     "No more questions.":
         jump choose_your_suspect
 
@@ -253,4 +260,100 @@ label mephisto_truer_motives:
     "I do know that, but I let him showing off. A confident suspect is a talkative suspect."
 
     jump mephisto_questions
+
+label mephisto_latin:
+    m "{i}The fox may switch clothes, he remains a fox{/i}, or something like that? I searched the Internet for it that very morning."
+
+    d "Why?"
+
+    m "Well, I've just heard it, and I was curious of its sense."
+
+    d "Who told you that?"
+
+    m "No one. That was a piece of Zelda and Anna conversation."
+
+    d "And you have particular good hearing."
+
+    m "Yes, we've already cover that."
+
+    d """
+    So you wouldn't mind telling me what else they've said?
+
+    Cause that doesn't exactly sound like a sentence anyone would naturally utter between {i}Oh, it's so cold today.{/i} and {i}Did you watch the news? The highway is closed down!{/i}.
+    """
+
+    "Mephisto freezes, suddenly conscious that his newly-found confidence pushed him to make a mistake."
+
+    m "Well, they did speak about the weather."
+
+    d "But?"
+
+    m "They may have dropped some allusions to other subjects."
+
+    d "Like?"
+
+    m """
+    Soft-spoken passive-aggressive jabs.
+
+    \"It's so cold today. {i}That's a good thing you've stopped living on the streets.{/i}\"
+
+    \"A good coffee will warm you up. {i}Except for your heart. Nothing can warm up that dead relic of you.{/i}\"
+
+    \"Nice hat. Perfect for winter. {i}Which of your lackeys knitted it for you?{/i}\"
+
+    \"Were you late today due to the storm? {i}Who am I kidding, you're always late. Vulpem pilum mutat, non mores.{/i}\"
+
+    \"Don't forget your change. {i}And please forget about me once for all.{/i}\"
+
+    \"Keep it as a tip. {i}A tip that I would love to respect your damnatio memoriae, if only you were any good at keeping the charade.{/i}\"
+    """
+
+    d "That's rather violent."
+
+    m "Yeah, I got the idea they know each other, and are not exactly friends."
+
+    d "And why didn't you tell me this sooner?"
+
+    "Silence sets in. Heavy, loud, agonizing silence."
+
+    m """
+    You've got the idea I try to keep my ears and my eyes open wide most of the time, just in case.
+
+    And… Well… Well. I saw the poison being poured into Outis' cup.
+    """
+
+    "More silence. I don't push him."
+
+    m """
+    It was definitely not a normal addition to a well-brewed coffee. So, even though I hated the guy, that goddamn identity tracker who abused my trust to better blackmail some of my clients, I jumped in.
+
+    But he misinterpreted my gesture, thought I was going to sabotage his new big plan, and didn't let me speak. He wasn't the first time we had fights like that actually.
+
+    I then decided the ingrate bastard could go to hell, and abandoned him to his drugged beverage.
+
+    At that time, I was convinced it was just some sleeping pills, that he was simply going to get robbed.
+
+    When I learned he actually died, I panicked. Not having helped technically made me a partner in crime of the murderer.
+
+    So, I decided to pretend I knew nothing, heard nothing, saw nothing. Not really a smart move, but anything to escape jail.
+    """
+
+    d "Who did it Mephisto?"
+
+    m "First, I want…"
+
+    d "WHO?"
+
+    m """
+    …
+
+    Zelda.
+
+    With no hesitation, quickly, almost under her victim's nose, just after she sat back at their table.
+
+    Magician-level of dexterity, she dropped the pills from her sleeve into the open cup in an instant.
+    """
+
+    jump choose_your_suspect
+
 

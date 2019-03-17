@@ -7,6 +7,8 @@ default zelda_drawings = False
 default zelda_identity_tracking = False
 default zelda_anna = False
 default zelda_mephisto = False
+default zelda_truer_conversation = False
+default zelda_latin = False
 
 menu zelda_questions:
     "Tell me what happened." if not zelda_testimony:
@@ -28,6 +30,13 @@ menu zelda_questions:
     "Ever wondered about Outis' motives?" if know_outis_job and not zelda_identity_tracking:
         $ zelda_identity_tracking = True
         jump zelda_identity_tracking
+    "Seems like your discussion with Outis was heated." if know_mephisto_heard_zelda and not zelda_truer_conversation:
+        $ zelda_truer_conversation = True
+        $ hint_about_outis_target = True
+        jump zelda_truer_conversation
+    "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not zelda_latin:
+        $ zelda_latin = True
+        jump zelda_latin
     "No more questions.":
         jump choose_your_suspect
 
@@ -151,6 +160,56 @@ label zelda_mephisto:
     d "And then?"
 
     z "The man gave up and departed angrily."
+
+    jump zelda_questions
+
+label zelda_truer_conversation:
+    z "You never worked as a freelancer, did you? Client always complains about everything, comparing your work not what he asked, but what he imagined."
+
+    d """
+    That may be true, but other people's testimonies that particular conversation went far beyond that.
+
+    You talked about plausible deniability before, but it is becoming obvious you were far too involved for that.
+    """
+
+    "For just one second, she stands silent, weighting her options."
+
+    z "Fine. Maybe Outis was suggesting he had some big catch at the end of his line, and it would be in my best financial interest to keep working for him."
+
+    d "Details, please."
+
+    z """
+    Some girl. Rich, prestigious, family. Public image thoroughly controlled. Lots of skeletons in the closet.
+
+    He was tracking a minor flaw in the storytelling of a rich, prestigious, family. You know, the kind with a thoroughly controlled public image, and a whole cemetery in the closet.
+
+    One of their owns had been slowly fading away from their official propaganda through time. At first, she was quite prominent in the glossy pictures, then her appearances became scarce and into the background, until she entirely vanished.
+
+    And, according to Outis' expertise, she was showing signs of using some heavy reshaping mod in her last pictures. The changes in her bone structure were quite clear in that regard he said.
+
+    And he was trying to convince me that, from this tenuous lead, he had almost discovered everything that happened, and that, with just a little extra push, he could get a lot of money either from the girl or her family.
+
+    He did not drop any name, so, for all I know, he could be lying out of his buttocks.
+    """
+
+    d "And what would have been your role in his scheme?"
+
+    z """
+    Unclear. I think he was trying to get an idea of what the chimera he was chasing looked like at different stages of her life, so he could determine the details of what had happened.
+
+    Honestly, I brand him as a completely delusional, mostly harmless, man. I do not think he would have succeeded at discovering anything money-worthy.
+
+    But I was still trying to get paid for the work already done, so I needed to keep the conversation going by playing his game, on the surface at least.
+    """
+
+    jump zelda_questions
+
+label zelda_latin:
+    # Change in expression
+
+    z "What?"
+
+    d "Just testing a theory."
 
     jump zelda_questions
 

@@ -5,6 +5,8 @@ default anna_mephisto = False
 default anna_outis_2 = False
 default anna_photo = False
 default anna_scenery = False
+default anna_puzzle = False
+default anna_damnatio = False
 
 label anna_introduction:
     "To do after character design is done"
@@ -37,6 +39,15 @@ menu anna_questions:
         $ anna_scenery = True
         $ know_mephisto_waited = True
         jump anna_scenery
+    "I have a peculiar request for you." if know_photo_girl and hint_about_outis_target and not anna_puzzle:
+        $ anna_puzzle = True
+        $ vulpem = True
+        jump anna_puzzle
+    "Damnatio memoriae." if mephisto_confession and not anna_damnatio:
+        $ anna_damnatio = True
+        $ anna_confession = True
+        $ anna_disabled = True
+        jump anna_damnatio
     "No more questions.":
         jump choose_your_suspect
 
@@ -128,7 +139,7 @@ label anna_zelda:
 
     She arrived early in the morning, ordered a simple coffee, then used her computer, alone at her table, for like half an hour before Outis arrived.
 
-    She waved at him, and he went to join her. They discussed for some time without ordering anything more, then Outis came to the counter to ask for a coffee, and returned quickly to his seat.
+    She waved at him, and he went to join her. They discussed for some time without ordering anything, then Outis came to the counter to ask for a coffee, and returned quickly to his seat.
 
     She came herself soon after, asked for a refill, did some small talk about the weather while she waited, and went back to their table with both cups.
 
@@ -141,7 +152,7 @@ label anna_mephisto:
     a """
     Mephisto is not there everyday, but it's as if.
 
-    I think the café is his more or less his public office. Some people come just to speak to him.
+    I think the café is more or less his public office. Some people come just to speak to him.
     """
 
     d "Which kind of people?"
@@ -226,7 +237,7 @@ label anna_photo:
 
     "The family name rings a bell. A quick search on your phone brings in a sharply-dressed young woman."
 
-    d "You've recognized her instantly from such an old photo."
+    d "You've recognized her instantly from such an old photo?"
 
     a "She hasn't changed much as you can see."
 
@@ -271,5 +282,83 @@ label anna_scenery:
 
     jump anna_questions
 
+label anna_puzzle:
+    d "I need to identify someone from a family like the Doors, upper upper class stuff, who vanished from public sight a few years ago."
 
+    # Quick changes in Anna's expression
+
+    a "Willingly or not?"
+
+    d "In a way that the involved persons would not like to be heard about."
+
+    a """
+    That's not helping much.
+
+    Some of those familiars are quite secretive, even for the most trivial of things. They frown at people simply suggesting they may poop.
+    """
+
+    d "Let's try it another way. From what reason would a golden child fade away?"
+
+    a """
+    Pretty much anything I would say.
+
+    Could be someone who grew up in public relationship land, got a doctor degree, then went on to live their own live, far away from constant gossip.
+
+    Could be the black sheep of the family, pushed away due to their terrible behavior before even mom's and dad's money cannot buy them a blank criminal record anymore.
+
+    Could be just a change in self-marketing strategy, switching people under the spotlight to match the trends.
+    """
+
+    d "What if I say the person in question switched face entirely?"
+
+    a """
+    Don't change anything. Who did not change appearance radically at least one in their life nowadays?
+
+    Look at you, for example. How do your own mother recognize you?
+    """
+
+    d "According to her, I could look like Mona Lisa or The Scream, she would still recognize me all the same cause I'll still be the same stubborn idiot underneath."
+
+    a "Oh, yeah. {i}Vulpem pilum mutat, non mores.{/i}"
+
+    "She let the Latin flow out naturally, with a Italian-sounding accent which you guess is the accurate pronunciation. Then, she almost bit her tongue when quickly switching back to English."
+
+    a "That means {i}the fox changes his fur, not his habits{/i}. There's a similar expression with a scorpion I think."
+
+    jump anna_questions
+
+label anna_damnatio:
+    a """
+    The most terrible sentence of Roman law. To have one's existence utterly removed from history, down to their name.
+
+    But the term is inappropriate for someone who discarded her identity of her own will. My sister just loves to show off her Latin, even I was always better at it.
+    """
+
+    d "You're not even denying it?"
+
+    a "Unless you speak random Latin phrases to all of your suspects, I guess you know everything at this point."
+
+    d "I'm more interested in what you saw and heard that in what you guessed."
+
+    a """
+    I didn't see her poison Outis with my own eyes, but she flashed me with the pills on the back of her sleeve when she said she was once again going to solve the problem herself while I was too busy fleeing.
+    """
+
+    d "And you didn't stop her?"
+
+    a """
+    The bitch had all power over me at the moment. One phone call to mom, and goodbye freedom.
+
+    For good this time, as I'm pretty sure she managed to put the blame of father's death upon me. The family would just have thrown me in some hole forever, and she would have had her way without any extra interference.
+
+    Let it be clear: She didn't kill a man to protect the new identity of her dear sister. She did it half to protect her name's reputation, half because she is prideful enough to believe she could one hundred-percent do it without being caught.
+    """
+
+    d "I can have you registered to the new identity police program if you cooperate. Will be easier than building yet another one from scratch."
+
+    a "I have no reason not to at this point. What do you want to know?"
+
+    d "Everything."
+
+    jump choose_your_suspect
 

@@ -56,6 +56,9 @@ default anna_introduction = False
 default mephisto_introduction = False
 default zelda_introduction = False
 
+default mephisto_disabled = False
+default anna_disabled = False
+
 default know_outis_name = False
 default know_mephisto_job = False
 default know_outis_query = False
@@ -70,15 +73,21 @@ default heard_mephisto_betrayal = False
 default know_mephisto_waited = False
 default heard_mephisto_request = False
 default mephisto_false_request = False
+default know_mephisto_heard_zelda = False
+default hint_about_outis_target = False
+default not_a_doors = False
+default vulpem = False
+default mephisto_confession = False
+default anna_confession = False
 
 menu choose_your_suspect:
-    "Anna the employee":
+    "Anna the employee" if not anna_disabled:
         if not anna_introduction:
             $ anna_introduction = True
             jump anna_introduction
         else:
             jump anna_questions
-    "Mephisto the regular":
+    "Mephisto the regular" if not mephisto_disabled:
         if not mephisto_introduction:
             $ mephisto_introduction = True
             jump mephisto_introduction
@@ -92,8 +101,6 @@ menu choose_your_suspect:
             jump zelda_questions
     "THINK (debug)":
         jump deductions
-    "EXIT (debug)":
-        jump debug_exit
 
 menu deductions:
     "Reshaping + Drawings" if know_outis_query and seen_drawings and not know_outis_job:
@@ -105,6 +112,9 @@ menu deductions:
     "Mephisto behavior + Mephisto testimony" if know_mephisto_waited and heard_mephisto_request and not mephisto_false_request:
         $ mephisto_false_request = True
         jump mephisto_false_request
+    "Photo + Zelda testimony" if know_photo_girl and hint_about_outis_target and not not_a_doors:
+        $ not_a_doors = True
+        jump not_a_doors
     "Nothing for now":
         jump choose_your_suspect
 
@@ -155,6 +165,15 @@ label mephisto_false_request:
 
     jump deductions
 
-label debug_exit:
-    return
+label not_a_doors:
+    """
+    No, you couldn't find anyone in the Doors family matching the description from Outis.
+    """
+
+    if not anna_puzzle:
+        """
+        Maybe you should ask Anna about this. She seems surprisingly resourceful at identifying persons from the upper class with very little information.
+        """
+
+    jump deductions
 
