@@ -227,8 +227,30 @@ label mephisto_truer_motives:
 
     But, yeah, maybe I've heard some bits…
 
-    [TO BE CONTINUED]
+    But you're going to be disappointed. They both were talking like someone else could be listening to them, only alluding to subjects, and never being explicit about them.
+
+    However, I think that was more than mere care about privacy. They reminded me of two poker players with a bad hand, each trying to outbluff the other.
+
+    From what I grasped, Outis was insinuating something very strongly. The word {i}reputation{/i} came back a few times.
+
+    Zelda kept her cards close to her chests, asking piercing questions but never revealing her intentions.
+
+    They had some drawings and photos in-between them. Couldn't say if they were arguments or apples of discord.
+
+    The whole affair smelled of money, but they only broad the subject after their short break to get coffee.
     """
+
+    d "And I thought they never succeeded at coding super-hearing."
+
+    m """
+    It's not that hard to program the nanomachines to improve the mechanical part of hearing.
+
+    But it takes a lot of tedious training to make your brain properly use your new capacities. Cannot affect the nerves directly after all°, so you have the right reflexes the old way, through repetitions of exercises.
+
+    That's why restoring hearing is easy with the current technology, but making it far better than average never caught on. But a few persons do have it.
+    """
+
+    "I do know that, but I let him showing off. A confident suspect is a talkative suspect."
 
     jump mephisto_questions
 
