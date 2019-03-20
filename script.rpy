@@ -23,7 +23,8 @@ screen notes():
                     if know_outis_name:
                         text "Name: Outis"
                     else:
-                        text "Name: ???"
+                        text "Name: {i}Unknown{/i}"
+                    text "Cause of death: Poisoned with basic meds"
 
                 vbox:
                     xsize 240
@@ -61,6 +62,23 @@ define z = Character("Zelda")
 image bg soft_white = Solid("#F5F5F5")
 image bg black = Solid("#000")
 
+init python:
+    def new_hyperlink_styler(target):
+        return hyperlink_styler(target)
+
+    def new_hyperlink_hovered(target):
+        return None
+
+    def new_hyperlink_clicked(target):
+        if target == 'notes':
+            globals()["new_"+target] = False
+            renpy.show_screen(target)
+            renpy.restart_interaction()
+        else:
+            return hyperlink_clicked(target)
+
+    style.default.hyperlink_functions = (new_hyperlink_styler, new_hyperlink_clicked, new_hyperlink_hovered)
+
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
     o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be there today actually."
@@ -76,8 +94,11 @@ label start:
     scene bg soft_white with dissolve
     nvl show dissolve
 
+    $ show_notes = True
+    $ new_notes = True
+
     nvl_narrator """
-    Some guy°, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a high quantity of common medical drugs°.
+    {a=notes}Some guy{/a}, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a {a=notes}high quantity of common medical drugs{/a}.
 
     \"Poor man's poison\" as the coroner called it: Anything you can usually found in a medicine cupboard mixed together at once.
 
@@ -112,9 +133,6 @@ label start:
 
     nvl hide dissolve
     scene bg black with dissolve
-
-    $ show_notes = True
-    $ new_notes = True
 
     "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
 
