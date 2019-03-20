@@ -1,4 +1,5 @@
 default show_notes = False
+default new_notes = False
 
 screen notes():
     tag notes
@@ -113,6 +114,7 @@ label start:
     scene bg black with dissolve
 
     $ show_notes = True
+    $ new_notes = True
 
     "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
 
