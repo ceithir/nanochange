@@ -262,10 +262,7 @@ screen quick_menu():
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
             if show_notes:
-                if new_notes:
-                    textbutton _("Notes") action [SetVariable("new_notes", False), ToggleScreen('notes')] style "notes_action_button"
-                else:
-                    textbutton _("Notes") action ToggleScreen('notes')
+                textbutton _("Notes") action ToggleScreen("notes")
             if show_encyclopedia:
                 textbutton _("Encyclopedia") action ToggleScreen("encyclopedia")
 
@@ -284,12 +281,6 @@ style quick_button:
 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
-
-style notes_action_button_text is quick_button_text:
-    color "#00f9ff"
-    outlines [ (absolute(1), "#4c4cff", absolute(0), absolute(0)) ]
-    bold True
-    hover_color "#fff"
 
 ################################################################################
 ## Main and Game Menu Screens

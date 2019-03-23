@@ -23,7 +23,6 @@ label start:
     nvl show dissolve
 
     $ show_notes = True
-    $ new_notes = True
     $ show_encyclopedia = True
 
     nvl_narrator """

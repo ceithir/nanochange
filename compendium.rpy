@@ -1,5 +1,4 @@
 default show_notes = False
-default new_notes = False
 
 screen notes(who="Outis", what=None):
     tag compendium
