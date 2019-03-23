@@ -26,7 +26,7 @@ label start:
     $ new_notes = True
 
     nvl_narrator """
-    {a=notes}Some guy{/a}, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a {a=notes}high quantity of common medical drugs{/a}.
+    {a=notes:outis:name}Some guy{/a}, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a {a=notes:outis:poison}high quantity of common medical drugs{/a}.
 
     \"Poor man's poison\" as the coroner called it: Anything you can usually found in a medicine cupboard mixed together at once.
 

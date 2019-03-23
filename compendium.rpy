@@ -1,7 +1,7 @@
 default show_notes = False
 default new_notes = False
 
-screen notes(who="Outis"):
+screen notes(who="Outis", what=None):
     tag notes
     zorder 1
     modal True
@@ -44,8 +44,12 @@ screen notes(who="Outis"):
                         if know_outis_name:
                             text "Name: Outis"
                         else:
-                            text "Name: {i}Unknown{/i}"
-                        text "Cause of death: Poisoned with basic meds"
+                            text "Name: Unknown":
+                                if what == "name":
+                                    style "notes_highlight"
+                        text "Cause of death: Poisoned with basic meds":
+                            if what == "poison":
+                                style "notes_highlight"
 
                     if who == "Anna":
                         text "Name: Anna"
@@ -78,6 +82,10 @@ style notes_header_button_text:
     color "#000"
     hover_color "#551a8b"
 
+style notes_highlight:
+    color "#ff3232"
+    italic True
+
 init python:
     def new_hyperlink_styler(target):
         return hyperlink_styler(target)
@@ -86,9 +94,19 @@ init python:
         return None
 
     def new_hyperlink_clicked(target):
-        if target == 'notes':
-            globals()["new_"+target] = False
-            renpy.show_screen(target)
+        if target.startswith("notes"):
+            globals()["new_notes"] = False
+            options = target.split(':')
+            if len(options) > 2:
+                who = options[1].capitalize()
+                what = options[2]
+            elif len(options) == 2:
+                who = options[1].capitalize()
+                what = None
+            else:
+                who = "Outis"
+                what = None
+            renpy.show_screen("notes", who, what)
             renpy.restart_interaction()
         else:
             return hyperlink_clicked(target)
