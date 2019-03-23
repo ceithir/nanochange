@@ -1,6 +1,6 @@
-label zelda_introduction:
-    "To do after character design is done"
-    jump zelda_questions
+define z = Character("Zelda", who_color="#ffde4b")
+
+image zelda = im.Crop("zelda.png", (55, 75, 480, 700))
 
 default zelda_testimony = False
 default zelda_drawings = False
@@ -10,35 +10,42 @@ default zelda_mephisto = False
 default zelda_truer_conversation = False
 default zelda_latin = False
 
-menu zelda_questions:
-    "Tell me what happened." if not zelda_testimony:
-        $ zelda_testimony = True
-        $ know_zelda_job = True
-        $ know_outis_name = True
-        jump zelda_testimony
-    "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
-        $ zelda_anna = True
-        jump zelda_anna
-    "Let's focus on the person who disturbs your conversation." if zelda_testimony and not zelda_mephisto:
-        $ zelda_mephisto = True
-        $ heard_mephisto_betrayal = True
-        jump zelda_mephisto
-    "Tell me more about Outis job proposal." if zelda_testimony and not zelda_drawings:
-        $ zelda_drawings = True
-        $ seen_drawings = True
-        jump zelda_drawings
-    "Ever wondered about Outis' motives?" if know_outis_job and not zelda_identity_tracking:
-        $ zelda_identity_tracking = True
-        jump zelda_identity_tracking
-    "Seems like your discussion with Outis was heated." if know_mephisto_heard_zelda and not zelda_truer_conversation:
-        $ zelda_truer_conversation = True
-        $ hint_about_outis_target = True
-        jump zelda_truer_conversation
-    "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not zelda_latin:
-        $ zelda_latin = True
-        jump zelda_latin
-    "No more questions.":
-        jump choose_your_suspect
+label zelda_introduction:
+    "To do after character design is done"
+    jump zelda_questions
+
+label zelda_questions:
+    show zelda at center
+
+    menu:
+        "Tell me what happened." if not zelda_testimony:
+            $ zelda_testimony = True
+            $ know_zelda_job = True
+            $ know_outis_name = True
+            jump zelda_testimony
+        "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
+            $ zelda_anna = True
+            jump zelda_anna
+        "Let's focus on the person who disturbs your conversation." if zelda_testimony and not zelda_mephisto:
+            $ zelda_mephisto = True
+            $ heard_mephisto_betrayal = True
+            jump zelda_mephisto
+        "Tell me more about Outis job proposal." if zelda_testimony and not zelda_drawings:
+            $ zelda_drawings = True
+            $ seen_drawings = True
+            jump zelda_drawings
+        "Ever wondered about Outis' motives?" if know_outis_job and not zelda_identity_tracking:
+            $ zelda_identity_tracking = True
+            jump zelda_identity_tracking
+        "Seems like your discussion with Outis was heated." if know_mephisto_heard_zelda and not zelda_truer_conversation:
+            $ zelda_truer_conversation = True
+            $ hint_about_outis_target = True
+            jump zelda_truer_conversation
+        "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not zelda_latin:
+            $ zelda_latin = True
+            jump zelda_latin
+        "No more questions.":
+            jump choose_your_suspect
 
 label zelda_testimony:
     z """

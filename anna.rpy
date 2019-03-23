@@ -1,3 +1,7 @@
+define a = Character("Anna", who_color="#dcad94", image="anna")
+
+image anna = im.Crop("anna.png", (145, 60, 345, 700))
+
 default anna_testimony = False
 default anna_outis = False
 default anna_zelda = False
@@ -12,44 +16,47 @@ label anna_introduction:
     "To do after character design is done"
     jump anna_questions
 
-menu anna_questions:
-    "Tell me what happened." if not anna_testimony:
-        $ anna_testimony = True
-        $ know_outis_name = True
-        jump anna_testimony
-    "What can you tell me about Outis?" if anna_testimony and not anna_outis:
-        $ anna_outis = True
-        jump anna_outis
-    "What can you tell me about Zelda?" if anna_testimony and not anna_zelda:
-        $ anna_zelda = True
-        jump anna_zelda
-    "What can you tell me about Mephisto?" if anna_testimony and not anna_mephisto:
-        $ anna_mephisto = True
-        $ know_mephisto_job = True
-        jump anna_mephisto
-    "Did you have a fight with Outis?" if anna_outis and not anna_outis_2 and know_anna_talked_to_outis:
-        $ anna_outis_2 = True
-        $ anna_name = True
-        jump anna_outis_2
-    "Show photo" if anna_testimony and seen_drawings and not anna_photo:
-        $ anna_photo = True
-        $ know_photo_girl = True
-        jump anna_photo
-    "Let's focus on the last minutes." if anna_testimony and not anna_scenery:
-        $ anna_scenery = True
-        $ know_mephisto_waited = True
-        jump anna_scenery
-    "I have a peculiar request for you." if know_photo_girl and hint_about_outis_target and not anna_puzzle:
-        $ anna_puzzle = True
-        $ vulpem = True
-        jump anna_puzzle
-    "Damnatio memoriae." if mephisto_confession and not anna_damnatio:
-        $ anna_damnatio = True
-        $ anna_confession = True
-        $ anna_disabled = True
-        jump anna_damnatio
-    "No more questions.":
-        jump choose_your_suspect
+label anna_questions:
+    show anna at center
+
+    menu:
+        "Tell me what happened." if not anna_testimony:
+            $ anna_testimony = True
+            $ know_outis_name = True
+            jump anna_testimony
+        "What can you tell me about Outis?" if anna_testimony and not anna_outis:
+            $ anna_outis = True
+            jump anna_outis
+        "What can you tell me about Zelda?" if anna_testimony and not anna_zelda:
+            $ anna_zelda = True
+            jump anna_zelda
+        "What can you tell me about Mephisto?" if anna_testimony and not anna_mephisto:
+            $ anna_mephisto = True
+            $ know_mephisto_job = True
+            jump anna_mephisto
+        "Did you have a fight with Outis?" if anna_outis and not anna_outis_2 and know_anna_talked_to_outis:
+            $ anna_outis_2 = True
+            $ anna_name = True
+            jump anna_outis_2
+        "Show photo" if anna_testimony and seen_drawings and not anna_photo:
+            $ anna_photo = True
+            $ know_photo_girl = True
+            jump anna_photo
+        "Let's focus on the last minutes." if anna_testimony and not anna_scenery:
+            $ anna_scenery = True
+            $ know_mephisto_waited = True
+            jump anna_scenery
+        "I have a peculiar request for you." if know_photo_girl and hint_about_outis_target and not anna_puzzle:
+            $ anna_puzzle = True
+            $ vulpem = True
+            jump anna_puzzle
+        "Damnatio memoriae." if mephisto_confession and not anna_damnatio:
+            $ anna_damnatio = True
+            $ anna_confession = True
+            $ anna_disabled = True
+            jump anna_damnatio
+        "No more questions.":
+            jump choose_your_suspect
 
 label anna_testimony:
     a """

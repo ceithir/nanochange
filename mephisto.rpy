@@ -1,7 +1,6 @@
+define m = Character("Mephisto", who_color="#a8ee49", image="mephisto")
 
-label mephisto_introduction:
-    "To do after character design is done"
-    jump mephisto_questions
+image mephisto = im.Crop("mephisto.png", (75, 40, 470, 740))
 
 default mephisto_testimony = False
 default mephisto_job = False
@@ -12,39 +11,46 @@ default mephisto_photo = False
 default mephisto_truer_motives = False
 default mephisto_latin = False
 
-menu mephisto_questions:
-    "Tell me what happened." if not mephisto_testimony:
-        $ mephisto_testimony = True
-        jump mephisto_testimony
-    "Tell me as much as you can about the victim." if mephisto_testimony and not mephisto_outis:
-        $ mephisto_outis = True
-        $ know_anna_talked_to_outis = True
-        $ know_outis_name = True
-        jump mephisto_outis
-    "What can you tell me about Anna?" if mephisto_testimony and not mephisto_anna:
-        $ mephisto_anna = True
-        jump mephisto_anna
-    "Let's talk about your daily activities." if mephisto_testimony and know_mephisto_job and not mephisto_job:
-        $ mephisto_job = True
-        $ know_outis_query = True
-        $ heard_mephisto_excuse = True
-        jump mephisto_job
-    "Ever met an identity tracker?" if know_outis_job and not mephisto_identity_tracking:
-        $ mephisto_identity_tracking = True
-        jump mephisto_identity_tracking
-    "Show photo" if mephisto_testimony and seen_drawings and not mephisto_photo:
-        jump mephisto_photo
-    "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
-        $ mephisto_truer_motives = True
-        $ know_mephisto_heard_zelda = True
-        jump mephisto_truer_motives
-    "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not mephisto_latin:
-        $ mephisto_latin = True
-        $ mephisto_disabled = True
-        $ mephisto_confession = True
-        jump mephisto_latin
-    "No more questions.":
-        jump choose_your_suspect
+label mephisto_introduction:
+    "To do after character design is done"
+    jump mephisto_questions
+
+label mephisto_questions:
+    show mephisto at center
+
+    menu:
+        "Tell me what happened." if not mephisto_testimony:
+            $ mephisto_testimony = True
+            jump mephisto_testimony
+        "Tell me as much as you can about the victim." if mephisto_testimony and not mephisto_outis:
+            $ mephisto_outis = True
+            $ know_anna_talked_to_outis = True
+            $ know_outis_name = True
+            jump mephisto_outis
+        "What can you tell me about Anna?" if mephisto_testimony and not mephisto_anna:
+            $ mephisto_anna = True
+            jump mephisto_anna
+        "Let's talk about your daily activities." if mephisto_testimony and know_mephisto_job and not mephisto_job:
+            $ mephisto_job = True
+            $ know_outis_query = True
+            $ heard_mephisto_excuse = True
+            jump mephisto_job
+        "Ever met an identity tracker?" if know_outis_job and not mephisto_identity_tracking:
+            $ mephisto_identity_tracking = True
+            jump mephisto_identity_tracking
+        "Show photo" if mephisto_testimony and seen_drawings and not mephisto_photo:
+            jump mephisto_photo
+        "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
+            $ mephisto_truer_motives = True
+            $ know_mephisto_heard_zelda = True
+            jump mephisto_truer_motives
+        "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not mephisto_latin:
+            $ mephisto_latin = True
+            $ mephisto_disabled = True
+            $ mephisto_confession = True
+            jump mephisto_latin
+        "No more questions.":
+            jump choose_your_suspect
 
 label mephisto_testimony:
     m """

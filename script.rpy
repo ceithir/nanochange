@@ -1,11 +1,10 @@
-define d = Character("The Devil")
+define d = Character("Inspector", who_color="#952304", image="devil")
 define o = Character("Officer")
-define a = Character("Anna")
-define m = Character("Mephisto")
-define z = Character("Zelda")
 
 image bg soft_white = Solid("#F5F5F5")
 image bg black = Solid("#000")
+
+image side devil = im.FactorScale(im.Flip(im.Crop("devil.png", (45, 65, 510, 735)), horizontal=True), 0.5)
 
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
@@ -104,27 +103,30 @@ default vulpem = False
 default mephisto_confession = False
 default anna_confession = False
 
-menu choose_your_suspect:
-    "Anna the employee" if not anna_disabled:
-        if not anna_introduction:
-            $ anna_introduction = True
-            jump anna_introduction
-        else:
-            jump anna_questions
-    "Mephisto the regular" if not mephisto_disabled:
-        if not mephisto_introduction:
-            $ mephisto_introduction = True
-            jump mephisto_introduction
-        else:
-            jump mephisto_questions
-    "Zelda the customer":
-        if not zelda_introduction:
-            $ zelda_introduction = True
-            jump zelda_introduction
-        else:
-            jump zelda_questions
-    "THINK (debug)":
-        jump deductions
+label choose_your_suspect:
+    scene bg black
+
+    menu:
+        "Anna the employee" if not anna_disabled:
+            if not anna_introduction:
+                $ anna_introduction = True
+                jump anna_introduction
+            else:
+                jump anna_questions
+        "Mephisto the regular" if not mephisto_disabled:
+            if not mephisto_introduction:
+                $ mephisto_introduction = True
+                jump mephisto_introduction
+            else:
+                jump mephisto_questions
+        "Zelda the customer":
+            if not zelda_introduction:
+                $ zelda_introduction = True
+                jump zelda_introduction
+            else:
+                jump zelda_questions
+        "THINK (debug)":
+            jump deductions
 
 menu deductions:
     "Reshaping + Drawings" if know_outis_query and seen_drawings and not know_outis_job:
