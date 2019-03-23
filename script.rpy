@@ -24,9 +24,10 @@ label start:
 
     $ show_notes = True
     $ new_notes = True
+    $ show_encyclopedia = True
 
     nvl_narrator """
-    {a=notes:outis:name}Some guy{/a}, not formally identified yet (only anonymous id* on him), died from ingesting a coffee spiced with a {a=notes:outis:poison}high quantity of common medical drugs{/a}.
+    {a=notes:outis:name}Some guy{/a}, not formally identified yet (only {a=def:anonymous_id}anonymous id{/a} on him), died from ingesting a coffee spiced with a {a=notes:outis:poison}high quantity of common medical drugs{/a}.
 
     \"Poor man's poison\" as the coroner called it: Anything you can usually found in a medicine cupboard mixed together at once.
 

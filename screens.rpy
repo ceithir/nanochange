@@ -266,7 +266,8 @@ screen quick_menu():
                     textbutton _("Notes") action [SetVariable("new_notes", False), ToggleScreen('notes')] style "notes_action_button"
                 else:
                     textbutton _("Notes") action ToggleScreen('notes')
-
+            if show_encyclopedia:
+                textbutton _("Encyclopedia") action ToggleScreen("encyclopedia")
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.

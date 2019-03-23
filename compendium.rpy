@@ -2,7 +2,7 @@ default show_notes = False
 default new_notes = False
 
 screen notes(who="Outis", what=None):
-    tag notes
+    tag compendium
     zorder 1
     modal True
 
@@ -86,6 +86,43 @@ style notes_highlight:
     color "#ff3232"
     italic True
 
+
+default show_encyclopedia = False
+
+screen encyclopedia(what=None):
+    tag compendium
+    zorder 1
+    modal True
+
+    frame:
+        xsize 960
+        ysize 600
+        xalign 0.5
+        yalign 0.5
+        background Solid("#f2eecb")
+
+        vbox:
+            fixed:
+                style_prefix "encyclopedia"
+                vbox:
+                    text "{b}Anonymous ID{/b}: TODO":
+                        if what == "anonymous_id":
+                            style "encyclopedia_highlight"
+
+            textbutton "Close" action Hide("encyclopedia") at right
+
+style encyclopedia_text:
+    color "#000"
+
+style encyclopedia_vbox:
+    spacing 10
+    xpos 10
+    ypos 10
+
+style encyclopedia_highlight:
+    color "#000"
+    italic True
+
 init python:
     def new_hyperlink_styler(target):
         return hyperlink_styler(target)
@@ -107,6 +144,10 @@ init python:
                 who = "Outis"
                 what = None
             renpy.show_screen("notes", who, what)
+            renpy.restart_interaction()
+        elif target.startswith("def"):
+            [_, what] = target.split(':')
+            renpy.show_screen("encyclopedia", what)
             renpy.restart_interaction()
         else:
             return hyperlink_clicked(target)
