@@ -29,10 +29,18 @@ label start:
     {a=notes:outis:name}Some guy{/a}, not formally identified yet (only {a=def:anonymous_id}anonymous id{/a} on him), died from ingesting a coffee spiced with a {a=notes:outis:poison}high quantity of common medical drugs{/a}.
 
     \"Poor man's poison\" as the coroner called it: Anything you can usually found in a medicine cupboard mixed together at once.
+    """
 
-    Death after consumption was pretty quick due to the victim already being alcoholized at that time and drugs and alcohol violently reacting together.
+    $ quick_death = True
 
-    Analysis of the liver seems to indicate the victim was a alcoholic°. Probable* use of a heavy hepatic-support program°, and therefore of few or none other programs*.
+    nvl_narrator """
+    Death after consumption was pretty quick due to the victim already being alcoholized at that time and {a=notes:outis:quick_death}drugs and alcohol reacting{/a} violently to each other.
+    """
+
+    $ alcoholic = True
+
+    nvl_narrator """
+    Analysis of the liver seems to indicate the victim was a {a=notes:outis:alcoholic}alcoholic{/a}. {a=def:no_probing}Probable{/a} use of a {a=notes:outis:mod}heavy hepatic-support program{/a}, and therefore of {a=def:mod_limit}few or none other programs{/a}.
 
     {clear}
 

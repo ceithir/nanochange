@@ -1,5 +1,8 @@
 default show_notes = False
 
+default quick_death = False
+default alcoholic = False
+
 screen notes(who="Outis", what=None):
     tag compendium
     zorder 1
@@ -49,6 +52,18 @@ screen notes(who="Outis", what=None):
                         text "Cause of death: Poisoned with basic meds":
                             if what == "poison":
                                 style "notes_highlight"
+                        if alcoholic:
+                            text "Mods: Reinforced liver":
+                                if what == "mod":
+                                    style "notes_highlight"
+                        if quick_death:
+                            text "Poison acted quicker than it should have due to high alcohol consumption.":
+                                if what == "quick_death":
+                                    style "notes_highlight"
+                        if alcoholic:
+                            text "Misc: Alcoholic":
+                                if what == "alcoholic":
+                                    style "notes_highlight"
 
                     if who == "Anna":
                         text "Name: Anna"
@@ -102,9 +117,17 @@ screen encyclopedia(what=None):
             fixed:
                 style_prefix "encyclopedia"
                 vbox:
-                    text "{b}Anonymous ID{/b}: TODO":
+                    text "{b}Anonymous ID{/b} A smart card in which are stored only information relevant to the rights of its owner (for example, if they are allowed to drive), but not their name, address, physical description or any other personal data. The method used to guarantee the authenticity of authorizations and ownership may vary, but is generally based upon advanced cryptography.":
                         if what == "anonymous_id":
                             style "encyclopedia_highlight"
+                    if alcoholic:
+                        text "{b}Modular limit{/b} Hard limit to the number of operations nanomachines can operate simultaneously on a single body. This number is directly correlated to the number of bots into one's body, itself a function of numerous factors (nanomachines stop self-replicating as soon as they detect they're putting a strain on their host's metabolism). High-priority life-support mods are often configured to aim for this limit, disabling every other mod when enabled.":
+                            if what == "mod_limit":
+                                style "encyclopedia_highlight"
+                    if alcoholic:
+                        text "{b}My body, my business{/b} It is highly illegal (and barely technologically possible) for anyone, police included, to read the memory of other, dead or alive, people's nanomachines to try to determine which program they are or were running. Therefore, even in the context of a criminal investigation, experts can at best hazard prudent educated guesses. See also: Pulcinella Law.":
+                            if what == "no_probing":
+                                style "encyclopedia_highlight"
 
             textbutton "Close" action Hide("encyclopedia") at right
 
@@ -115,6 +138,7 @@ style encyclopedia_vbox:
     spacing 10
     xpos 10
     ypos 10
+    xsize 940
 
 style encyclopedia_highlight is encyclopedia_text:
     italic True
