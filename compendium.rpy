@@ -81,10 +81,8 @@ style notes_header_button_text:
     color "#000"
     hover_color "#551a8b"
 
-style notes_highlight:
-    color "#ff3232"
+style notes_highlight is notes_text:
     italic True
-
 
 default show_encyclopedia = False
 
@@ -118,8 +116,7 @@ style encyclopedia_vbox:
     xpos 10
     ypos 10
 
-style encyclopedia_highlight:
-    color "#000"
+style encyclopedia_highlight is encyclopedia_text:
     italic True
 
 init python:
