@@ -1,6 +1,8 @@
 define m = Character("Mephisto", who_color="#a8ee49", image="mephisto")
 
-image mephisto = im.Crop("mephisto.png", (75, 40, 470, 740))
+image mephisto neutral = im.Crop("bio-neu.png", (75, 40, 470, 740))
+image mephisto nervous = im.Crop("bio-nerv.png", (75, 40, 470, 740))
+image mephisto happy = im.Crop("bio-nerv.png", (75, 40, 470, 740))
 
 default mephisto_testimony = False
 default mephisto_job = False
@@ -16,7 +18,7 @@ label mephisto_introduction:
     jump mephisto_questions
 
 label mephisto_questions:
-    show mephisto at center
+    show mephisto neutral at center
 
     menu:
         "Tell me what happened." if not mephisto_testimony:
@@ -39,6 +41,7 @@ label mephisto_questions:
             $ mephisto_identity_tracking = True
             jump mephisto_identity_tracking
         "Show photo" if mephisto_testimony and seen_drawings and not mephisto_photo:
+            $ mephisto_photo = True
             jump mephisto_photo
         "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
             $ mephisto_truer_motives = True
@@ -84,6 +87,8 @@ label mephisto_job:
     So stop playing around, and tell me what Outis really wanted of a popular biohacker.
     """
 
+    show mephisto nervous with dissolve
+
     m "I don't…"
 
     d "Please."
@@ -94,7 +99,7 @@ label mephisto_job:
 
     d "Sure, I'll fetch you that."
 
-    # Transition
+    show mephisto neutral with fade
 
     "After reading the paper shield twice, he finally agrees to my terms."
 
@@ -125,6 +130,8 @@ label mephisto_job:
     jump mephisto_questions
 
 label mephisto_identity_tracking:
+    show mephisto nervous
+
     "He instantly tenses up."
 
     m """
@@ -145,7 +152,11 @@ label mephisto_identity_tracking:
     Do you have information that I don't have?
 
     But, yes, I was having doubts about him. He played the scholar quite well, but as of late, I found some of his questions far too much oriented.
+    """
 
+    show mephisto neutral with dissolve
+
+    m """
     Actually, he stopped paying me about the time I started being more prudent in my words around him. Dunno if that's evidence against or in favor of him.
     """
 

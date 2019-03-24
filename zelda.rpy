@@ -1,6 +1,8 @@
 define z = Character("Zelda", who_color="#ffde4b")
 
-image zelda = im.Crop("zelda.png", (55, 75, 480, 700))
+image zelda neutral = im.Crop("Ar-neu.png", (55, 75, 480, 700))
+image zelda nervous = im.Crop("Ar-nerv.png", (55, 75, 480, 700))
+image zelda surprised = im.Crop("Ar-relie.png", (55, 75, 480, 700))
 
 default zelda_testimony = False
 default zelda_drawings = False
@@ -15,7 +17,7 @@ label zelda_introduction:
     jump zelda_questions
 
 label zelda_questions:
-    show zelda at center
+    show zelda neutral at center
 
     menu:
         "Tell me what happened." if not zelda_testimony:
@@ -91,7 +93,7 @@ label zelda_drawings:
 
     d "Please do. Any hint can be relevant."
 
-    # Transition
+    show zelda neutral with fade
 
     """
     The half-dozen of rough drawings show unknown, but surprisingly diverse, visages.

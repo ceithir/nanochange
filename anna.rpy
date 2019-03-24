@@ -1,6 +1,8 @@
 define a = Character("Anna", who_color="#dcad94", image="anna")
 
-image anna = im.Crop("anna.png", (145, 60, 345, 700))
+image anna neutral = im.Crop("rest-neu.png", (145, 60, 345, 700))
+image anna nervous = im.Crop("rest-nerv.png", (145, 60, 345, 700))
+image anna happy = im.Crop("rest-reliev.png", (145, 60, 345, 700))
 
 default anna_testimony = False
 default anna_outis = False
@@ -17,7 +19,7 @@ label anna_introduction:
     jump anna_questions
 
 label anna_questions:
-    show anna at center
+    show anna neutral at center
 
     menu:
         "Tell me what happened." if not anna_testimony:
@@ -83,7 +85,11 @@ label anna_testimony:
     They weren't exactly shouting through the whole room, so I didn't understand what they said, but it didn't sound nice.
 
     It was shortly over though. Mephisto bade out before things escalated too far.
+    """
 
+    show anna nervous
+
+    a """
     And then…
 
     And then, he collapsed from his chair. Everyone rushed in. He was breathing very badly, suffocating. I tried to help him. Sam, the one in charge that day, called the emergency services, but neither I nor they could do anything.
@@ -172,11 +178,15 @@ label anna_mephisto:
 
     d "And for which reason was he that popular with the {i}bourgeoisie{/i}?"
 
+    show anna nervous
+
     "I can see the cogs in her brain turn as she's trying to formulate a non-suspicious answer. May as well cut short her circumlocutions."
 
     d "Is he a dealer?"
 
-    "She's taken aback for a second, then answers bluntly."
+    show anna neutral with dissolve
+
+    "She's taken aback for a second, then answers calmly."
 
     a "No. But he is a biohacker*°."
 
@@ -237,6 +247,9 @@ label anna_outis_2:
 
 label anna_photo:
     d "Do you know who this is?"
+
+    show anna nervous with dissolve
+    show anna neutral with dissolve
 
     "She blinks a few times at the picture."
 
