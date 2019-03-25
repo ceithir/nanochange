@@ -44,10 +44,18 @@ label start:
     {clear}
 
     Suicide is a valid hypothesis, but so is murder.
+    """
 
-    In the latter case, the barista, registered as Anna°, is the most likely suspect. She had every opportunity to pour the deadly cocktail into the cup.
+    $ anna_suspect = True
 
-    However, the victim didn't go to the counter himself to fetch the drink. Instead, it was the woman he was sharing a table with (identifier: Zelda°) who got it, and brought it back alongside her own order.
+    nvl_narrator """
+    In the latter case, the barista, registered as {a=notes:anna}Anna{/a}, is the most likely suspect. She had every opportunity to pour the deadly cocktail into the cup.
+    """
+
+    $ zelda_suspect = True
+
+    nvl_narrator """
+    However, the victim didn't go to the counter himself to fetch the drink. Instead, it was the woman he was sharing a table with (identifier: {a=notes:zelda}Zelda{/a}) who got it, and brought it back alongside her own order.
 
     She could have slip the drug on her way, or even back at the table, while the man was looking elsewhere.
 
@@ -62,8 +70,12 @@ label start:
     {clear}
 
     Anna and Zelda have already been interrogated one time, through superficially, alongside every other present at the shop when the cops came in. They were then escorted here for a more thorough investigation.
+    """
 
-    The mysterious man, named* Mephisto°, is a faithful customer, and someone in the staff had his number. He has answered positively to the gentle but firm request to come at the station for questioning.
+    $ mephisto_suspect = True
+
+    nvl_narrator """
+    The mysterious man, {a=def:name}known{/a} as {a=notes:mephisto}Mephisto{/a}, is a faithful customer, and someone in the staff had his number. He has answered positively to the gentle but firm request to come at the station for questioning.
     """
 
     nvl hide dissolve

@@ -2,6 +2,9 @@ default show_notes = False
 
 default quick_death = False
 default alcoholic = False
+default anna_suspect = False
+default mephisto_suspect = False
+default zelda_suspect = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -23,21 +26,24 @@ screen notes(who="Outis", what=None):
                         text "The Victim" at truecenter
                     else:
                         textbutton "The Victim" action Show("notes", who="Outis") at truecenter
-                frame:
-                    if who == "Anna":
-                        text "The Employee" at truecenter
-                    else:
-                        textbutton "The Employee" action Show("notes", who="Anna") at truecenter
-                frame:
-                    if who == "Mephisto":
-                        text "The Regular" at truecenter
-                    else:
-                        textbutton "The Regular" action Show("notes", who="Mephisto") at truecenter
-                frame:
-                    if who == "Zelda":
-                        text "The Customer" at truecenter
-                    else:
-                        textbutton "The Customer" action Show("notes", who="Anna") at truecenter
+                if anna_suspect:
+                    frame:
+                        if who == "Anna":
+                            text "The Employee" at truecenter
+                        else:
+                            textbutton "The Employee" action Show("notes", who="Anna") at truecenter
+                if mephisto_suspect:
+                    frame:
+                        if who == "Mephisto":
+                            text "The Regular" at truecenter
+                        else:
+                            textbutton "The Regular" action Show("notes", who="Mephisto") at truecenter
+                if zelda_suspect:
+                    frame:
+                        if who == "Zelda":
+                            text "The Customer" at truecenter
+                        else:
+                            textbutton "The Customer" action Show("notes", who="Anna") at truecenter
 
             fixed:
                 style_prefix "notes"
@@ -67,12 +73,18 @@ screen notes(who="Outis", what=None):
 
                     if who == "Anna":
                         text "Name: Anna"
+                        text "Occupation: Coffee shop employee"
+                        text "Prepared the cup that was ultimately poisoned."
 
-                    if who == "Mephisto":
-                        text "Name: Mephisto"
+                    if mephisto_suspect:
+                        if who == "Mephisto":
+                            text "Name: Mephisto"
+                            text "Had an altercation with the victim very shortly before his death."
 
-                    if who == "Zelda":
-                        text "Name: Zelda"
+                    if zelda_suspect:
+                        if who == "Zelda":
+                            text "Name: Zelda"
+                            text "Brought the deadly cup to the victim."
 
             textbutton "Close" action Hide("notes") at right
 
@@ -117,6 +129,10 @@ screen encyclopedia(what=None):
             fixed:
                 style_prefix "encyclopedia"
                 vbox:
+                    if mephisto_suspect:
+                        text "{b}About names{/b} The distinction between legal name, usage name and {i}nom de plume{/i} does not exist anymore. A person's name is whatever they choose to respond when asked about it, and people may answer to many different names depending on context.":
+                            if what == "name":
+                                style "encyclopedia_highlight"
                     text "{b}Anonymous ID{/b} A smart card in which are stored only information relevant to the rights of its owner (for example, if they are allowed to drive), but not their name, address, physical description or any other personal data. The method used to guarantee the authenticity of authorizations and ownership may vary, but is generally based upon advanced cryptography.":
                         if what == "anonymous_id":
                             style "encyclopedia_highlight"
