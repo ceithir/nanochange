@@ -38,7 +38,6 @@ label anna_questions:
             jump anna_zelda
         "What can you tell me about Mephisto?" if anna_testimony and not anna_mephisto:
             $ anna_mephisto = True
-            $ know_mephisto_job = True
             jump anna_mephisto
         "Did you have a fight with Outis?" if anna_outis and not anna_outis_2 and know_anna_talked_to_outis:
             $ anna_outis_2 = True
@@ -225,7 +224,9 @@ label anna_mephisto:
 
     "She's taken aback for a second, then answers calmly."
 
-    a "No. But he is a biohacker*°."
+    $ know_mephisto_job = True
+
+    a "No. But he is a {a=def:biohacker}biohacker{/a}."
 
     """
     I nod in understanding.

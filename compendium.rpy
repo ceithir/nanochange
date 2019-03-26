@@ -94,6 +94,8 @@ screen notes(who="Outis", what=None):
                     if mephisto_suspect:
                         if who == "Mephisto":
                             text "Name: Mephisto"
+                            if know_mephisto_job:
+                                text "Occupation: Biohacker."
                             text "Had an altercation with the victim very shortly before his death."
                             if outis_mephisto_acquaintance:
                                 text "Was an acquaintance of the victim.":
@@ -149,8 +151,12 @@ screen encyclopedia(what=None):
         background Solid("#f2eecb")
 
         vbox:
-            fixed:
-                style_prefix "encyclopedia"
+            style_prefix "encyclopedia"
+            viewport:
+                draggable True
+                mousewheel True
+                arrowkeys True
+
                 vbox:
                     if mephisto_suspect:
                         text "{b}About names{/b} The distinction between legal name, usage name and {i}nom de plume{/i} does not exist anymore. A person's name is whatever they choose to respond when asked about it, and people may answer to many different names depending on context.":
@@ -159,6 +165,10 @@ screen encyclopedia(what=None):
                     text "{b}Anonymous ID{/b} A smart card in which are stored only information relevant to the rights of its owner (for example, if they are allowed to drive), but not their name, address, physical description or any other personal data. The method used to guarantee the authenticity of authorizations and ownership may vary, but is generally based upon advanced cryptography.":
                         if what == "anonymous_id":
                             style "encyclopedia_highlight"
+                    if know_mephisto_job:
+                        text "{b}Biohacker{/b} A programmer specialized in finding ways to circumvent the original limitations of standard nanomachines to have them perform tasks far beyond their original purpose. Their services can range from minor customization of programs written by other hackers to creating from scratch routines able to entirely replace complex surgical operations.":
+                            if what == "biohacker":
+                                style "encyclopedia_highlight"
                     if alcoholic:
                         text "{b}Modular limit{/b} Hard limit to the number of operations nanomachines can operate simultaneously on a single body. This number is directly correlated to the number of bots into one's body, itself a function of numerous factors (nanomachines stop self-replicating as soon as they detect they're putting a strain on their host's metabolism). High-priority life-support mods are often configured to aim for this limit, disabling every other mod when enabled.":
                             if what == "mod_limit":
@@ -174,11 +184,12 @@ style encyclopedia_text:
     color "#000"
     justify True
 
+style encyclopedia_viewport:
+    xpos 15
+
 style encyclopedia_vbox:
     spacing 10
-    xpos 15
-    ypos 15
-    xsize 930
+    xsize 920
 
 style encyclopedia_highlight is encyclopedia_text:
     italic True
