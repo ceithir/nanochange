@@ -5,6 +5,7 @@ default alcoholic = False
 default anna_suspect = False
 default mephisto_suspect = False
 default zelda_suspect = False
+default zelda_wait = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -43,14 +44,16 @@ screen notes(who="Outis", what=None):
                         if who == "Zelda":
                             text "The Customer" at truecenter
                         else:
-                            textbutton "The Customer" action Show("notes", who="Anna") at truecenter
+                            textbutton "The Customer" action Show("notes", who="Zelda") at truecenter
 
             fixed:
                 style_prefix "notes"
                 vbox:
                     if who == "Outis":
                         if know_outis_name:
-                            text "Name: Outis"
+                            text "Name: Outis":
+                              if what == "name":
+                                style "notes_highlight"
                         else:
                             text "Name: Unknown":
                                 if what == "name":
@@ -85,6 +88,10 @@ screen notes(who="Outis", what=None):
                         if who == "Zelda":
                             text "Name: Zelda"
                             text "Brought the deadly cup to the victim."
+                            if zelda_wait:
+                                text "Was at arm's length of the cup during its preparation.":
+                                    if what == "counter":
+                                        style "notes_highlight"
 
             textbutton "Close" action Hide("notes") at right
 

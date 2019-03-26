@@ -63,9 +63,13 @@ label start:
 
     According to several different witnesses (two other employees and a bored regular waiting for someone late), another man also went to the victim's table shortly after the deadly coffee was delivered.
 
-    They had a short but lively conversation, then this person left the restaurant. A short window of opportunity, but an existing one.
+    They had a short but lively conversation, then this person left the restaurant. A short window of opportunity, but a clearly existing one.
 
-    The same cannot be proved for any other person present at the shop that day. It's not totally impossible that someone else had such an opportunity, but there's no witness of it, so my dear colleagues have decided to focus their attention on those three.
+    Those three are supposedly the only ones who got close enough of the cup between the time it was prepared and its consumption, so my dear colleagues have decided to focus all of their attention on them.
+
+    And, indeed, since no trace of poison was found anywhere else in the restaurant, except for a small, anonymous plastic bag lying on the floor that anyone could have thrown there during the confusion following the death, the logical razor would have that one of them is the culprit.
+
+    At least, they're the most likely to give me any useful information on what happened.
 
     {clear}
 
@@ -81,7 +85,7 @@ label start:
     nvl hide dissolve
     scene bg black with dissolve
 
-    "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual room, waiting for someone, anyone, to talk to them."
+    "So, three suspects, or at least witnesses, currently kept alone with their thoughts in individual rooms, waiting for someone, anyone, to talk to them."
 
     "Which one do I want to relieve first?"
 

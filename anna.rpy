@@ -15,7 +15,12 @@ default anna_puzzle = False
 default anna_damnatio = False
 
 label anna_introduction:
-    "To do after character design is done"
+    show anna neutral at center with fade
+
+    "Anna."
+
+    "Your archetypal employee of a small brand café. Part-barista, waitress, cook, cleaner, she does her part of all the day-to-day work needed to keep the place running."
+
     jump anna_questions
 
 label anna_questions:
@@ -24,7 +29,6 @@ label anna_questions:
     menu:
         "Tell me what happened." if not anna_testimony:
             $ anna_testimony = True
-            $ know_outis_name = True
             jump anna_testimony
         "What can you tell me about Outis?" if anna_testimony and not anna_outis:
             $ anna_outis = True
@@ -61,22 +65,43 @@ label anna_questions:
             jump choose_your_suspect
 
 label anna_testimony:
+    show anna happy with dissolve
+
     a """
     It was a slow day at work. Far less people than usual.
 
     You see, our usual customers are mainly people working nearby. But, with the snowstorm, they couldn't make it to work today. No work, no coffee before work.
 
     So, for most of the morning, they were more employees than customers in the shop, and everything was quiet.
+    """
 
-    At some point, that guy came in. A semi-regular. Not here everyday, but comes frequently enough that I remember his face. Uses the alias Outis°.
+    show anna neutral with dissolve
+    $ know_outis_name = True
+
+    a """
+    At some point, that guy came in. A semi-regular. Not here everyday, but comes frequently enough that I remember his face. Uses the alias {a=notes:outis:name}Outis{/a}.
 
     He asked for the flavor of the week, a Dark Latte Americano.
 
-    The right machine hadn't been booted yet, so it took me a bit of time to prepare his order. Like five, maybe ten minutes?
+    The right machine hadn't been booted yet, so it took me a bit of time to prepare his order.
+    """
 
+    show anna nervous with dissolve
+
+    a """
+    Like five, maybe ten minutes?
+    """
+
+    show anna neutral with dissolve
+
+    a """
     Didn't really check. As I said, the atmosphere was distressed. People took their time, nobody wanted to return into the cold fast.
+    """
 
-    So, the girl he was with came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and waited at the counter while I made it.
+    $ zelda_wait = True
+
+    a"""
+    So, the girl he was with came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and {a=notes:zelda:counter}waited at the counter{/a} while I made both.
 
     She went back to their table with both cups, I went back to dozing off.
 
