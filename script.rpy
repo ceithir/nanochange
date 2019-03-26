@@ -5,6 +5,7 @@ image bg soft_white = Solid("#F5F5F5")
 image bg black = Solid("#000")
 
 image side devil = im.FactorScale(im.Flip(im.Crop("dem-neu.png", (45, 65, 510, 735)), horizontal=True), 0.5)
+image side devil inquisitive = im.FactorScale(im.Flip(im.Crop("dem-inq.png", (45, 65, 510, 735)), horizontal=True), 0.5)
 
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
