@@ -149,12 +149,13 @@ screen encyclopedia(what=None):
 
 style encyclopedia_text:
     color "#000"
+    justify True
 
 style encyclopedia_vbox:
     spacing 10
-    xpos 10
-    ypos 10
-    xsize 940
+    xpos 15
+    ypos 15
+    xsize 930
 
 style encyclopedia_highlight is encyclopedia_text:
     italic True
