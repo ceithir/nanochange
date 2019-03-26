@@ -6,6 +6,9 @@ default anna_suspect = False
 default mephisto_suspect = False
 default zelda_suspect = False
 default zelda_wait = False
+default outis_mephisto_acquaintance = False
+default outis_sober = False
+default outis_perfume = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -70,9 +73,18 @@ screen notes(who="Outis", what=None):
                                 if what == "quick_death":
                                     style "notes_highlight"
                         if alcoholic:
-                            text "Misc: Alcoholic":
-                                if what == "alcoholic":
-                                    style "notes_highlight"
+                            if outis_sober:
+                                text "Alcoholic. Tried to hide it. People were not fooled.":
+                                    if what == "alcoholic":
+                                        style "notes_highlight"
+                            else:
+                                text "Alcoholic.":
+                                    if what == "alcoholic":
+                                        style "notes_highlight"
+                            if outis_perfume:
+                                text "Extra effort to dissimulate his alcohol problem today.":
+                                    if what == "perfume":
+                                        style "notes_highlight"
 
                     if who == "Anna":
                         text "Name: Anna"
@@ -83,6 +95,10 @@ screen notes(who="Outis", what=None):
                         if who == "Mephisto":
                             text "Name: Mephisto"
                             text "Had an altercation with the victim very shortly before his death."
+                            if outis_mephisto_acquaintance:
+                                text "Was an acquaintance of the victim.":
+                                    if what == "acquaintance":
+                                        style "notes_highlight"
 
                     if zelda_suspect:
                         if who == "Zelda":

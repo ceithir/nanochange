@@ -19,7 +19,7 @@ label anna_introduction:
 
     "Anna."
 
-    "Your archetypal employee of a small brand café. Part-barista, waitress, cook, cleaner, she does her part of all the day-to-day work needed to keep the place running."
+    "Your archetypal employee of a small brand café. Part barista, waitress, cook, cleaner, she does her part of all the day-to-day work needed to keep the place running."
 
     jump anna_questions
 
@@ -139,24 +139,36 @@ label anna_outis:
     I saw him for the first time about one month ago. Perhaps two actually. Time flies.
 
     After that, he came back about twice a week. Always ordering the coffee that was {i}à la mode{/i}.
+    """
 
-    Often, he'll just drink it quickly. Sometimes, he would go for a quick chat with Mephisto°.
+    $ outis_mephisto_acquaintance = True
+
+    a """
+    Often, he'll just drink it quickly. Sometimes, he would go for a quick {a=notes:mephisto:acquaintance}chat with Mephisto{/a}.
 
     Mephisto is that guy who's so often there we start worrying about his well-being when he doesn't show up for a few days.
 
     As for the elephant into the room… Yeah, the guy clearly had a problem with alcohol. He was more often than not smelling of it.
 
     Never actually ordered anything alcoholic in the café though. I think he was trying to hide his addiction.
+    """
 
-    Probably was using mods to keep his mind clear, as he didn't act like a drunk man°.
+    $ outis_sober = True
+
+    a """
+    Probably was using mods to keep his mind clear, as he {a=notes:outis:alcoholic}didn't act like a drunk man{/a}.
     """
 
     d "Was he acting any different today from any other day?"
 
     a """
     Well, he had a girl with him. That's unusual enough. Though they didn't seem very close.
+    """
 
-    I think he was wearing some extra perfume too. Maybe to turn on the charm, maybe to hide his usual wine smell.
+    $ outis_perfume = True
+
+    a """
+    I think he was wearing some {a=notes:outis:perfume}extra perfume{/a} too. Maybe to turn on the charm, maybe to hide his usual wine smell.
 
     And I think that's all. Until the accident, everything else seemed as usual.
     """
