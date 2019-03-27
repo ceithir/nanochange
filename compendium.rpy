@@ -152,12 +152,12 @@ screen encyclopedia(what=None, scroll=0.0):
         background Solid("#f2eecb")
 
         vbox:
-            style_prefix "encyclopedia"
             viewport:
                 draggable True
                 mousewheel True
                 arrowkeys True
                 yinitial scroll
+                style_prefix "encyclopedia"
 
                 vbox:
                     if mephisto_suspect:
