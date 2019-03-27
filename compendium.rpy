@@ -10,6 +10,8 @@ default outis_mephisto_acquaintance = False
 default outis_sober = False
 default outis_perfume = False
 default pulcinella = False
+default mephisto_aggressive = False
+default bobson = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -102,6 +104,10 @@ screen notes(who="Outis", what=None):
                                 text "Was an acquaintance of the victim.":
                                     if what == "acquaintance":
                                         style "notes_highlight"
+                            if mephisto_aggressive:
+                                text "Unusually aggressive today.":
+                                    if what == "aggressive":
+                                        style "notes_highlight"
 
                     if zelda_suspect:
                         if who == "Zelda":
@@ -170,6 +176,10 @@ screen encyclopedia(what=None, scroll=0.0):
                     if know_mephisto_job:
                         text "{b}Biohacker{/b} A programmer specialized in finding ways to circumvent the original limitations of standard nanomachines to have them perform tasks far beyond their original purpose. Their services can range from minor customization of programs written by other hackers to creating from scratch routines able to entirely replace complex surgical operations.":
                             if what == "biohacker":
+                                style "encyclopedia_highlight"
+                    if bobson:
+                        text "{b}Bobson & Bobson{/b} Parent company of Biofresh™ and century-old pharmaceutical giant. Nowadays, the company is mainly known for its intensive lobbying, its abusive lawsuits and its numerous barely legal intimidation maneuvers, all meant to have the nanomachines' users have them pay good money and conform to what they edict is the only proper use of their technology. Though they lost most of their edge after Pulcinella's Law was enacted, they still can ruin a specific person life if determined enough.":
+                            if what == "bobson":
                                 style "encyclopedia_highlight"
                     if alcoholic:
                         text "{b}Modular limit{/b} Hard limit to the number of operations nanomachines can operate simultaneously on a single body. This number is directly correlated to the number of bots into one's body, itself a function of numerous factors (nanomachines stop self-replicating as soon as they detect they're putting a strain on their host's metabolism). High-priority life-support mods are often configured to aim for this limit, disabling every other mod when enabled.":

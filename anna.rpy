@@ -256,8 +256,12 @@ label anna_mephisto:
 
     a """
     At the beginning, as usual, working on his computer on his usual seat.
+    """
 
-    I remember finding very strange that he went to talk to Outis. Normally, he let people come to him, and never meddle with the other tables.
+    $ mephisto_aggressive = True
+
+    a """
+    I remember finding very {a=notes:mephisto:aggressive}strange that he went to talk to Outis{/a}. Normally, he lets people come to him, and never meddle with the other tables.
 
     And I found even stranger that he left immediately after. Usually, he stays in most of the day.
     """
@@ -266,6 +270,12 @@ label anna_mephisto:
 
     a """
     Wouldn't anyone? Though we thought he was harmless, he is an outlaw after all.
+    """
+
+    $ bobson = True
+
+    a """
+    Maybe he felt like the {a=def:bobson}Bobson{/a} were on his track and lost it.
     """
 
     jump anna_questions
