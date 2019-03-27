@@ -9,6 +9,7 @@ default zelda_wait = False
 default outis_mephisto_acquaintance = False
 default outis_sober = False
 default outis_perfume = False
+default pulcinella = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -138,7 +139,7 @@ style notes_highlight is notes_text:
 
 default show_encyclopedia = False
 
-screen encyclopedia(what=None):
+screen encyclopedia(what=None, scroll=0.0):
     tag compendium
     zorder 1
     modal True
@@ -156,6 +157,7 @@ screen encyclopedia(what=None):
                 draggable True
                 mousewheel True
                 arrowkeys True
+                yinitial scroll
 
                 vbox:
                     if mephisto_suspect:
@@ -176,6 +178,10 @@ screen encyclopedia(what=None):
                     if alcoholic:
                         text "{b}My body, my business{/b} It is highly illegal (and barely technologically possible) for anyone, police included, to read the memory of other, dead or alive, people's nanomachines to try to determine which program they are or were running. Therefore, even in the context of a criminal investigation, experts can at best hazard prudent educated guesses. See also: Pulcinella Law.":
                             if what == "no_probing":
+                                style "encyclopedia_highlight"
+                    if pulcinella:
+                        text "{b}Pulcinella's Law{/b} Also known as {i}Freedom through hypocrisy{/i} laws. A body of laws allowing anyone to use the nanomachines inside their own body as they see fit without technically breaking the patents of the Bodyfresh™ company. The trick is that having them run a unlicensed program is still illicit on paper, but the law enforces a strict ban on checking the bots' internal memory, making it impossible to prove the misdemeanor, and therefore for trials on those charges to end up with a guilty sentence. The world has been runninng on that absurd compromise for ten years now. See also: My body, my business.":
+                            if what == "pulcinella":
                                 style "encyclopedia_highlight"
 
             textbutton "Close" action Hide("encyclopedia") at right
@@ -217,8 +223,12 @@ init python:
             renpy.show_screen("notes", who, what)
             renpy.restart_interaction()
         elif target.startswith("def"):
-            [_, what] = target.split(':')
-            renpy.show_screen("encyclopedia", what)
+            options = target.split(':')
+            what = options[1]
+            scroll = 0.0
+            if len(options) > 2:
+                scroll = float(options[2])
+            renpy.show_screen("encyclopedia", what, scroll)
             renpy.restart_interaction()
         else:
             return hyperlink_clicked(target)

@@ -232,8 +232,12 @@ label anna_mephisto:
     I nod in understanding.
 
     Biohackers are in the gray zone of the law. What they do is technically illegal, but they're tolerated as long as they keep a plausible cover.
+    """
 
-    It's all a consequence of that good old Pulcinella Law°.
+    $ pulcinella = True
+
+    """
+    It's all a consequence of that good old {a=def:pulcinella:1.0}Pulcinella's Law{/a}.
     """
 
     d "Did he have an agreement with the shop?"
