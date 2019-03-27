@@ -324,7 +324,7 @@ label anna_photo:
     jump anna_questions
 
 label anna_scenery:
-    d "Let's say from the moment you finished preparing both coffees. At that time, where exactly in the café were Outis, Mephisto, Zelda and yourself?"
+    d "Let's start back from the moment you finished preparing both coffees. At that time, where exactly in the café were Outis, Mephisto, Zelda and yourself?"
 
     a """
     I was behind the counter.
@@ -340,14 +340,20 @@ label anna_scenery:
     Mine didn't. Zelda sat at her table. Then Mephisto rose and closed the distance to Outis.
 
     Not a minute later, he went out, almost in a straight line, with just a minimal detour to grab his stuff.
+    """
 
+    show anna nervous with dissolve
+
+    a """
     Then, end of the world. No idea who did what at that moment as it was utter chaos.
     """
 
-    d "Let's go back a little. No one else crossed path with any of you four from the moment the coffee was pulled to the tragic end?"
+    d "Let's go back a little. No one else crossed path with any of you four, from the moment the coffee was pulled, to the tragic end?"
+
+    show anna neutral with dissolve
 
     a """
-    No. If that was an usual day, I wouldn't have been able to say that for sure: There's always someone else waiting at the bar on in the alleys.
+    No. If that had been an usual day, I wouldn't be able to say that for sure: There's always someone else waiting at the bar on in the alleys.
 
     But today, with so little people, each of them was really standing out, and I would have remember.
     """

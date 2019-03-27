@@ -12,6 +12,7 @@ default outis_perfume = False
 default pulcinella = False
 default mephisto_aggressive = False
 default bobson = False
+default mephisto_outis_money = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -103,6 +104,10 @@ screen notes(who="Outis", what=None):
                             if outis_mephisto_acquaintance:
                                 text "Was an acquaintance of the victim.":
                                     if what == "acquaintance":
+                                        style "notes_highlight"
+                            if mephisto_outis_money:
+                                text "The victim was owing him money.":
+                                    if what == "outis_debt":
                                         style "notes_highlight"
                             if mephisto_aggressive:
                                 text "Unusually aggressive today.":

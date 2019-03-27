@@ -14,7 +14,12 @@ default mephisto_truer_motives = False
 default mephisto_latin = False
 
 label mephisto_introduction:
-    "To do after character design is done"
+    show mephisto neutral at center with fade
+
+    "Mephisto."
+
+    "Tries to give himself a style, from poor naming sense to a slightly shady look. Has no chance to win at that game against {i}me{/i}."
+
     jump mephisto_questions
 
 label mephisto_questions:
@@ -27,7 +32,6 @@ label mephisto_questions:
         "Tell me as much as you can about the victim." if mephisto_testimony and not mephisto_outis:
             $ mephisto_outis = True
             $ know_anna_talked_to_outis = True
-            $ know_outis_name = True
             jump mephisto_outis
         "What can you tell me about Anna?" if mephisto_testimony and not mephisto_anna:
             $ mephisto_anna = True
@@ -60,8 +64,13 @@ label mephisto_testimony:
     I talked to a guy, that guy died shortly after, and now I'm obviously a suspect.
 
     Let me tell you this is all bad luck on my side.
+    """
 
-    This guy was owing me money and has been avoiding me as of late.
+    $ know_outis_name = True
+    $ mephisto_outis_money = True
+
+    m """
+    This guy, {a=notes:outis:name}Outis{/a}, {a=notes:mephisto:outis_debt}was owing me money{/a} and has been avoiding me as of late.
 
     Since he was there for once, I took the opportunity to ask for my cash. When he tried to play dumb, I just ragequitted.
     """
