@@ -5,7 +5,7 @@ image bg soft_white = Solid("#F5F5F5")
 image bg black = Solid("#000")
 
 image side devil = im.FactorScale(im.Flip(im.Crop("dem-neu.png", (45, 65, 510, 735)), horizontal=True), 0.5)
-image side devil inquisitive = im.FactorScale(im.Flip(im.Crop("dem-inq.png", (45, 65, 510, 735)), horizontal=True), 0.5)
+image side devil relaxed = im.FactorScale(im.Flip(im.Crop("dem-inq.png", (45, 65, 510, 735)), horizontal=True), 0.5)
 
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
@@ -154,7 +154,6 @@ menu deductions:
 
 label identity_tracker_reveal:
     scene bg black with fade
-    $ know_outis_job = True
 
     """
     So…
@@ -164,8 +163,12 @@ label identity_tracker_reveal:
     Commissioning artistic visions of what someone could look like after very specific series of transformations…
 
     Seems like the victim was trying to determine the current appearance of someone having undergone an integral transformation.
+    """
 
-    In other words, he was an identity tracker*°.
+    $ know_outis_job = True
+
+    """
+    In other words, {a=notes:outis:job}he{/a} was an {a=def:identity_tracker:0.5}identity tracker{/a}.
 
     What's the saying again?
 
@@ -179,9 +182,11 @@ label identity_tracker_reveal:
 
     He could have been an independent tracker, searching for some lucrative scandal. In that case, the girl in the photo should be famous, rich, or from a famous or rich family.
 
-    But he could as well be working under contract. Finding track of someone someone else has lost sight of against a great deal of money.
+    But he could as well be working under contract. Finding track of somebody someone else has lost sight of against a great deal of money.
 
-    And in your line of duty, the sponsor of such searches if more often than not a mafioso seeking for a bad payer or a traitor to the family.
+    And in my line of duty, the sponsor of such searches is more often than not a mafioso seeking for a bad payer or a traitor to the family.
+
+    Not someone the tracked went to meet. At any cost.
     """
 
     if know_photo_girl:

@@ -280,14 +280,14 @@ label anna_mephisto:
     jump anna_questions
 
 label anna_outis_2:
-    a "I wouldn't call it a fight. Guy wanted to know more about me, I said I wasn't interested, he insisted, I may have spoken a little louder than I wanted too."
+    a "I wouldn't call it a fight. Guy wanted to know more about me, I said I wasn't interested, he insisted, I may have spoken a little louder than I intented too."
 
     d "Once?"
 
     a """
     Maybe twice. Or thrice.
 
-    But you know, it's still all too usual to receive unwanted attention from customers. Usually, I'm just better at handling such interactions.
+    But you know, it's still all too common to receive unwanted attention from customers. Usually, I'm just better at handling such interactions.
     """
 
     d "What did he said or tried to do that ended up blowing your fuse?"

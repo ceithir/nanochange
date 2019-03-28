@@ -16,6 +16,7 @@ default mephisto_outis_money = False
 default mephisto_job_details = False
 default anna_fitting = False
 default outis_journalism = False
+default fairies = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -68,7 +69,16 @@ screen notes(who="Outis", what=None):
                             text "Name: Unknown":
                                 if what == "name":
                                     style "notes_highlight"
-                        if outis_journalism:
+                        if know_outis_job:
+                            if outis_journalism:
+                                text "Occupation: {s}Journalist{/s} Identity tracker":
+                                    if what == "job":
+                                        style "notes_highlight"
+                            else:
+                                text "Occupation: Identity tracker":
+                                    if what == "job":
+                                        style "notes_highlight"
+                        elif outis_journalism:
                             text "Occupation: Journalist?":
                                 if what == "job":
                                     style "notes_highlight"
@@ -100,6 +110,8 @@ screen notes(who="Outis", what=None):
                             text "Was investigating… Phoenix Doors?":
                                 if what == "phoenix":
                                     style "notes_highlight"
+                        if know_outis_query and not know_outis_job:
+                            text "Was investigating… sloughing?"
 
                     if who == "Anna":
                         text "Name: Anna"
@@ -212,8 +224,16 @@ screen encyclopedia(what=None, scroll=0.0):
                             if what == "biohacker":
                                 style "encyclopedia_highlight"
                     if bobson:
-                        text "{b}Bobson & Bobson{/b} Parent company of Biofresh™ and century-old pharmaceutical giant. Nowadays, the company is mainly known for its intensive lobbying, its abusive lawsuits and its numerous barely legal intimidation maneuvers, all meant to have the nanomachines' users have them pay good money and conform to what they edict is the only proper use of their technology. Though they lost most of their edge after Pulcinella's Law was enacted, they still can ruin a specific person life if determined enough.":
+                        text "{b}Bobson & Bobson{/b} Parent company of Biofresh™ and century-old pharmaceutical giant. Nowadays, the company is mainly known for its intensive lobbying, its abusive lawsuits and its numerous barely legal intimidation maneuvers, all meant to have the nanomachines' users pay them good money and conform to what they edict is proper use of their technology. Though they lost most of their edge after Pulcinella's Law was enacted, they still can ruin a given person's life if determined enough.":
                             if what == "bobson":
+                                style "encyclopedia_highlight"
+                    if fairies:
+                        text "{b}Fairies{/b} Nickname of the common nanobots. A reference to how they were called in the ads for the Enchanted Beauty Mask™, the product for which they were originally created. Following the scandal of the great spread, and the reappropriation of the bots by their new hosts for diverse and unprecedented usages, the appellation has become somewhat ironic.":
+                            if what == "fairies":
+                                style "encyclopedia_highlight"
+                    if know_outis_job:
+                        text "{b}Identity tracker{/b} A private investigator specialized in tracking persons through names', locations' and appearances' changes, often breaching every single privacy law in the process.":
+                            if what == "identity_tracker":
                                 style "encyclopedia_highlight"
                     if alcoholic:
                         text "{b}Modular limit{/b} Hard limit to the number of operations nanomachines can operate simultaneously on a single body. This number is directly correlated to the number of bots into one's body, itself a function of numerous factors (nanomachines stop self-replicating as soon as they detect they're putting a strain on their host's metabolism). High-priority life-support mods are often configured to aim for this limit, disabling every other mod when enabled.":
@@ -226,6 +246,10 @@ screen encyclopedia(what=None, scroll=0.0):
                     if pulcinella:
                         text "{b}Pulcinella's Law{/b} Also known as {i}Freedom through hypocrisy{/i} laws. A body of laws allowing anyone to use the nanomachines inside their own body as they see fit without technically breaking the patents of the Bodyfresh™ company. The trick is that having them run a unlicensed program is still illicit on paper, but the law enforces a strict ban on checking the bots' internal memory, making it impossible to prove the misdemeanor, and therefore for trials on those charges to end up with a guilty sentence. The world has been runninng on that absurd compromise for ten years now. See also: My body, my business.":
                             if what == "pulcinella":
+                                style "encyclopedia_highlight"
+                    if know_outis_query:
+                        text "{b}Sloughing{/b} The act of discarding one's skin (as reptiles do). Also slang for a long series of nanomodifications designed to reshape entirely one's face and/or body, due to the metaphor of the person leaving behind their old appearance in the same way the snake gets rid of its used scales. Sloughing is the main reason any kind of appearance-based authentication has been obsoleted, even though a full sloughing can take years to complete.":
+                            if what == "sloughing":
                                 style "encyclopedia_highlight"
 
             textbutton "Close" action Hide("encyclopedia") at right
