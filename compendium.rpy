@@ -13,6 +13,9 @@ default pulcinella = False
 default mephisto_aggressive = False
 default bobson = False
 default mephisto_outis_money = False
+default mephisto_job_details = False
+default anna_fitting = False
+default outis_journalism = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -65,6 +68,10 @@ screen notes(who="Outis", what=None):
                             text "Name: Unknown":
                                 if what == "name":
                                     style "notes_highlight"
+                        if outis_journalism:
+                            text "Occupation: Journalist?":
+                                if what == "job":
+                                    style "notes_highlight"
                         text "Cause of death: Poisoned with basic meds":
                             if what == "poison":
                                 style "notes_highlight"
@@ -89,11 +96,23 @@ screen notes(who="Outis", what=None):
                                 text "Extra effort to dissimulate his alcohol problem today.":
                                     if what == "perfume":
                                         style "notes_highlight"
+                        if know_photo_girl:
+                            text "Was investigating… Phoenix Doors?":
+                                if what == "phoenix":
+                                    style "notes_highlight"
 
                     if who == "Anna":
                         text "Name: Anna"
                         text "Occupation: Coffee shop employee"
                         text "Prepared the cup that was ultimately poisoned."
+                        if anna_fitting:
+                            text "Extra efforts to blend in with the crowd.":
+                                if what == "fitting":
+                                    style "notes_highlight"
+                        if know_anna_talked_to_outis:
+                            text "Was pestered by Outis.":
+                                if what == "outis_attention":
+                                    style "notes_highlight"
 
                     if mephisto_suspect:
                         if who == "Mephisto":
@@ -119,9 +138,14 @@ screen notes(who="Outis", what=None):
                             text "Name: Zelda"
                             if know_zelda_job:
                                 text "Occupation: Artist"
-                                text "Was working on portraits for Outis.":
-                                    if what == "portrait":
-                                        style "notes_highlight"
+                                if mephisto_job_details:
+                                    text "Was working on an artist's impression of what a person could look like now.":
+                                        if what == "portrait":
+                                            style "notes_highlight"
+                                else:
+                                    text "Was working on a portrait for Outis.":
+                                        if what == "portrait":
+                                            style "notes_highlight"
                             text "Brought the deadly cup to the victim."
                             if zelda_wait:
                                 text "Was within reach of the cup during its preparation.":

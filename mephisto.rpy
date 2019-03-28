@@ -31,7 +31,6 @@ label mephisto_questions:
             jump mephisto_testimony
         "Tell me as much as you can about the victim." if mephisto_testimony and not mephisto_outis:
             $ mephisto_outis = True
-            $ know_anna_talked_to_outis = True
             jump mephisto_outis
         "What can you tell me about Anna?" if mephisto_testimony and not mephisto_anna:
             $ mephisto_anna = True
@@ -136,7 +135,10 @@ label mephisto_job:
     So today, since he couldn't escape without dumping his girl, I nicely asked for an update, he played dumb, I said some bad words, and decided to go elsewhere to cool down my head.
     """
 
-    jump mephisto_questions
+    if seen_drawings:
+        jump identity_tracker_reveal
+    else:
+        jump mephisto_questions
 
 label mephisto_identity_tracking:
     show mephisto nervous
@@ -173,18 +175,22 @@ label mephisto_identity_tracking:
 
 label mephisto_outis:
     m """
-    Outis has been an irregular customer for as of late. As far as I remember, he never came just for a coffee, but always to discuss rather professionally with someone. The café was more or less his meeting room.
+    Outis has been an irregular customer as of late. As far as I remember, he never came just for a coffee, but always to discuss rather professionally with someone. The café was more or less his meeting room.
     """
 
     d "What kind of business was he doing there?"
 
+    $ outis_journalism = True
+
     m """
-    Journalism or research I guess. I remember him conducting interviews more than more than once. But I didn't hear enough of these conversations to grasp their subjects, and I didn't pry.
+    {a=notes:outis:job}Journalism or research{/a} I guess. I remember him conducting interviews more than once. But I didn't hear enough of these conversations to grasp their subjects, and I didn't pry.
     """
 
     d "Anything else you can remember? Any remarkable habit for instance?"
 
-    m "Well, I think he tried hitting on Anna a few times. At least, I remember her rebuffing him several times."
+    $ know_anna_talked_to_outis = True
+
+    m "Well, I think {a=notes:anna:outis_attention}he tried hitting on Anna{/a} a few times. At least, I remember her rebuffing him several times."
 
     jump mephisto_questions
 
@@ -193,7 +199,7 @@ label mephisto_photo:
 
     "He stares at the photo for a full minute before answering."
 
-    d "Sorry, but no. Would love to have her as client though, cause she seems loaded."
+    m "Sorry, but no. Would love to have her as a client though, cause she seems loaded."
 
     jump mephisto_questions
 
@@ -203,21 +209,23 @@ label mephisto_anna:
 
     I haven't interacted much with her, but from what I've seen, she's basically average.
 
-    I was already a regular when she got hired, about two years ago I would say. Does this job cause it pays at least part of the bills, and does it well enough, but it's no really a lifelong passion of her.
+    I was already a regular when she got hired. That was about two years ago I would say. Does this job cause it pays at least part of the bills, and does it well enough, but it's no really a lifelong passion of her.
 
-    She's also often present at the café. I guess that's her main gig.
+    She's also often there when I'm at the café. I guess that's her main gig.
     """
 
     d "Nothing unusual at all?"
 
     "He takes a minute to think about your question."
 
+    $ anna_fitting = True
+
     m """
-    Well, sometimes, I feel like she's trying a bit too hard to fit in.
+    Well, sometimes, I feel like she's {a=notes:anna:fitting}trying a bit too hard to fit in{/a}.
 
     For example, I once overheard a conversation between her and several of her colleagues where she was pretending to know about some popular band from ten years ago when it was painfully obvious she had no idea who they were.
 
-    Likewise, she used to occasionally employ some pretty uncommon Latin idioms, then turn red as if she had said something terrible when someone raised an eyebrow in surprise. She's updated her speech pattern to get ride of them entirely.
+    Likewise, she used to occasionally employ some pretty uncommon Latin idioms, then turn red as if she had said something terrible when someone raised an eyebrow in surprise. She's updated her speech pattern to get ride of them entirely since.
     """
 
     d "You're quite observant aren't you?"

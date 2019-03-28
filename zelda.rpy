@@ -2,7 +2,7 @@ define z = Character("Zelda", who_color="#ffde4b")
 
 image zelda neutral = im.Crop("Ar-neu.png", (55, 75, 480, 700))
 image zelda nervous = im.Crop("Ar-nerv.png", (55, 75, 480, 700))
-image zelda surprised = im.Crop("Ar-relie.png", (55, 75, 480, 700))
+image zelda disturbed = im.Crop("Ar-relie.png", (55, 75, 480, 700))
 
 default zelda_testimony = False
 default zelda_drawings = False
@@ -77,7 +77,11 @@ label zelda_testimony:
     Soon, his coffee is ready, I go fetch it, and a new one for myself while I'm at it.
 
     I'm barely back that another customer walks straight to us, and starts arguing crassly with Outis. He answers similarly, and the man runs away in rage.
+    """
 
+    show zelda disturbed with dissolve
+
+    z """
     I'll never know what this was all about, as Outis then drank his coffee, and Hell's gates opened.
 
     I guess you already saw men dying in your line of duty. Me never before this day. That was even more horrible than anything I could have imagined.
@@ -94,8 +98,12 @@ label zelda_testimony:
 label zelda_drawings:
     z """
     He provided me with a set of photos of some person, and asked me to imagine, and draw, what they would look like with a few more years, different hair and eye color, alternative skin tone, subtle changes in bone structure etc.
+    """
 
-    It was all very strict. He had made several lists, each with a precise combination of transformations that he wanted to see applied.
+    $ mephisto_job_details = True
+
+    z """
+    {a=notes:zelda:portrait}It was all very strict.{/a} He had made several lists, each with a precise combination of transformations that he wanted to see applied.
     """
 
     d "And what did the results looked like?"
@@ -109,7 +117,7 @@ label zelda_drawings:
     """
     The half-dozen of rough drawings show unknown, but surprisingly diverse, visages.
 
-    Facial features are heavily different from one image to the next, a full gradient from smoothness to hardness, light to dark.
+    Facial features are heavily different from one image to the next, a full gradient from smoothness to hardness, lightness to darkness.
 
     There's also a photo, from what looks like a posh long-haired highschooler.
     """
@@ -118,7 +126,10 @@ label zelda_drawings:
 
     z "Yeah. All the changes were minor, but the lists were very long."
 
-    jump zelda_questions
+    if know_outis_query:
+        jump identity_tracker_reveal
+    else:
+        jump zelda_questions
 
 label zelda_identity_tracking:
     z "Oh, I think he was a facade for a rich girl wanting to know beforehand what she would like after a full makeover."
@@ -158,7 +169,7 @@ label zelda_mephisto:
     z """
     I don't know if there is really anything I can add about that man.
 
-    He was there when I arrived, behind his computer, focused on his work.
+    He was there when I arrived, behind his computer, focused on his screen.
 
     I wondered if he could be Outis, but he did not match the description my client had sent me.
 
@@ -167,15 +178,11 @@ label zelda_mephisto:
 
     d "What did he say exactly?"
 
-    z "Bad words mainly. The lexical field was of lies, lack of honor, and breach of confidence."
+    z "An incoherent litany of bad words. I'm not sure even him was understanding what he was trying to say."
 
-    d "He accused Outis of having betrayed his trust?"
+    d "And how did Outis react?"
 
-    z "Maybe. Was really hard to understand without context."
-
-    d "And what did Outis answer?"
-
-    z "He did not. He just asked impolitely of his accusatory to go somewhere else do something else."
+    z "Similarly. Not the finest hour of either of them."
 
     d "And then?"
 
@@ -222,7 +229,10 @@ label zelda_truer_conversation:
     But I was still trying to get paid for the work already done, so I needed to keep the conversation going by playing his game, on the surface at least.
     """
 
-    jump zelda_questions
+    if know_photo_girl:
+        jump not_a_doors
+    else:
+        jump zelda_questions
 
 label zelda_latin:
     # Change in expression

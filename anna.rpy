@@ -45,7 +45,6 @@ label anna_questions:
             jump anna_outis_2
         "Show photo" if anna_testimony and seen_drawings and not anna_photo:
             $ anna_photo = True
-            $ know_photo_girl = True
             jump anna_photo
         "Let's focus on the last minutes." if anna_testimony and not anna_scenery:
             $ anna_scenery = True
@@ -305,7 +304,9 @@ label anna_photo:
 
     "She blinks a few times at the picture."
 
-    a "Eh, yeah. That's Phoenix Doors. One of the Doors' children. Big money. Probably works at the family company today."
+    $ know_photo_girl = True
+
+    a "Eh, yeah. That's {a=notes:outis:phoenix}Phoenix Doors{/a}. One of the Doors' children. Big money. Probably works at the family company today."
 
     "The family name rings a bell. A quick search on your phone brings in a sharply-dressed young woman."
 
@@ -313,15 +314,22 @@ label anna_photo:
 
     a "She hasn't changed much as you can see."
 
-    "I must agree with her. After several years doing this job, you tend to take for granted people change skin twice a year, but that's far more true. A lot of people actually prefer to keep looking the same as long as possible."
+    "I must agree with her. After several years doing this job, you tend to take for granted people shed skin twice a year, but that's far more true. A lot of people actually prefer to keep looking the same as long as possible."
 
     d "Still, you've recognized her instantly from an old photo. That's impressive."
+
+    show anna nervous with dissolve
 
     a "Well, we went to the same music school a long time ago."
 
     "The Internet does confirm that the Doors' girl did take piano lessons at a prestigious, and expensive, {i}conservatoire{/i} as part of her studies."
 
-    jump anna_questions
+    if know_outis_job:
+        jump photo_inconsistency
+    elif hint_about_outis_target:
+        jump not_a_doors
+    else:
+        jump anna_questions
 
 label anna_scenery:
     d "Let's start back from the moment you finished preparing both coffees. At that time, where exactly in the café were Outis, Mephisto, Zelda and yourself?"
@@ -353,7 +361,7 @@ label anna_scenery:
     show anna neutral with dissolve
 
     a """
-    No. If that had been an usual day, I wouldn't be able to say that for sure: There's always someone else waiting at the bar on in the alleys.
+    No. If that had been an usual day, I wouldn't be able to say that for sure: there's always someone else waiting at the bar on in the alleys.
 
     But today, with so little people, each of them was really standing out, and I would have remember.
     """

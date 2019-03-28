@@ -146,22 +146,16 @@ label choose_your_suspect:
             jump deductions
 
 menu deductions:
-    "Reshaping + Drawings" if know_outis_query and seen_drawings and not know_outis_job:
-        $ know_outis_job = True
-        jump identity_tracker_reveal
-    "Identity tracker + Photo" if know_outis_job and know_photo_girl and not photo_inconsistency:
-        $ photo_inconsistency = True
-        jump photo_inconsistency
     "Mephisto behavior + Mephisto testimony" if know_mephisto_waited and heard_mephisto_request and not mephisto_false_request:
         $ mephisto_false_request = True
         jump mephisto_false_request
-    "Photo + Zelda testimony" if know_photo_girl and hint_about_outis_target and not not_a_doors:
-        $ not_a_doors = True
-        jump not_a_doors
     "Nothing for now":
         jump choose_your_suspect
 
 label identity_tracker_reveal:
+    scene bg black with fade
+    $ know_outis_job = True
+
     """
     So…
 
@@ -190,14 +184,23 @@ label identity_tracker_reveal:
     And in your line of duty, the sponsor of such searches if more often than not a mafioso seeking for a bad payer or a traitor to the family.
     """
 
-    jump deductions
+    if know_photo_girl:
+        jump photo_inconsistency
+    else:
+        jump choose_your_suspect
 
 label photo_inconsistency:
+    scene bg black with fade
+    $ photo_inconsistency = True
+
     "You can never be 100\% sure, but looks like the girl in the photo is indeed Phoenix Door."
 
     "A girl who never discarded her identity° at all. So why would an identity tracker focus his efforts on her."
 
-    jump deductions
+    if hint_about_outis_target and not not_a_doors:
+        jump not_a_doors
+    else:
+        jump choose_your_suspect
 
 label mephisto_false_request:
     """
@@ -209,6 +212,9 @@ label mephisto_false_request:
     jump deductions
 
 label not_a_doors:
+    scene bg black with fade
+    $ not_a_doors = True
+
     """
     No, you couldn't find anyone in the Doors family matching the description from Outis.
     """
@@ -218,5 +224,5 @@ label not_a_doors:
         Maybe you should ask Anna about this. She seems surprisingly resourceful at identifying persons from the upper class with very little information.
         """
 
-    jump deductions
+    jump choose_your_suspect
 
