@@ -117,9 +117,14 @@ screen notes(who="Outis", what=None):
                     if zelda_suspect:
                         if who == "Zelda":
                             text "Name: Zelda"
+                            if know_zelda_job:
+                                text "Occupation: Artist"
+                                text "Was working on portraits for Outis.":
+                                    if what == "portrait":
+                                        style "notes_highlight"
                             text "Brought the deadly cup to the victim."
                             if zelda_wait:
-                                text "Was at arm's length of the cup during its preparation.":
+                                text "Was within reach of the cup during its preparation.":
                                     if what == "counter":
                                         style "notes_highlight"
 

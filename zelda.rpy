@@ -13,7 +13,12 @@ default zelda_truer_conversation = False
 default zelda_latin = False
 
 label zelda_introduction:
-    "To do after character design is done"
+    show zelda neutral at center with fade
+
+    "Zelda."
+
+    "The wild card of this story. Nobody admits of knowing her, and she was quite close to the victim when he died."
+
     jump zelda_questions
 
 label zelda_questions:
@@ -22,8 +27,6 @@ label zelda_questions:
     menu:
         "Tell me what happened." if not zelda_testimony:
             $ zelda_testimony = True
-            $ know_zelda_job = True
-            $ know_outis_name = True
             jump zelda_testimony
         "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
             $ zelda_anna = True
@@ -52,10 +55,18 @@ label zelda_questions:
 label zelda_testimony:
     z """
     I think it all started last Tuesday.
+    """
 
-    I was working on my personal projects when I received a message about a potential commission, from a person using the alias Outis*.
+    $ know_outis_name = True
 
-    He wanted a realistic portrait. Not necessarily my forte, but I wasn't going to refuse a paid gig.
+    z """
+    I was working on my personal projects when I received a message about a potential commission, from a person using the alias {a=notes:outis:name}Outis{/a}.
+    """
+
+    $ know_zelda_job = True
+
+    z """
+    He {a=notes:zelda:portrait}wanted a realistic portrait{/a}. Not necessarily my forte, but I wasn't going to refuse a paid gig.
 
     As his requirements were complex, and we were living in the same city, I agreed, perhaps foolishly, to meet him face to face to discuss the matter further.
 
