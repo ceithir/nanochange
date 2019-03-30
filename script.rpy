@@ -196,11 +196,13 @@ label identity_tracker_reveal:
 
 label photo_inconsistency:
     scene bg black with fade
-    $ photo_inconsistency = True
 
     "You can never be 100\% sure, but looks like the girl in the photo is indeed Phoenix Door."
 
-    "A girl who never discarded her identity° at all. So why would an identity tracker focus his efforts on her."
+    $ go_rainbow = True
+    $ photo_inconsistency = True
+
+    "A girl who never {a=def:rainbow:0.5}went rainbow{/a} at all. So {a=notes:outis:phoenix}why{/a} would an identity tracker focus his efforts on her?"
 
     if hint_about_outis_target and not not_a_doors:
         jump not_a_doors

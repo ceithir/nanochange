@@ -123,7 +123,7 @@ label mephisto_job:
     $ fairies = True
 
     m """
-    I'm honestly impressed by the gals who manage to build such programs. {a=def:fairies:0.5}The fairies{/a} simply weren't made for that, you need some serious skills to have them perform that way.
+    I'm honestly impressed by the gals who manage to build such programs. The {a=def:fairies:0.5}fairies{/a} simply weren't made for that, you need some serious skills to have them perform that way.
 
     But I don't think you want to hear about my idols. Outis then.
 
@@ -175,7 +175,7 @@ label mephisto_identity_tracking:
     show mephisto neutral with dissolve
 
     m """
-    Actually, he stopped paying me about the time I started being more prudent in my words around him. Dunno if that's evidence against or in favor of him.
+    Actually, he stopped paying me about the time I started being more prudent with my words around him. Dunno if that's evidence against or in favor of him.
     """
 
     jump mephisto_questions

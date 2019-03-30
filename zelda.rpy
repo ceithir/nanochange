@@ -132,11 +132,11 @@ label zelda_drawings:
         jump zelda_questions
 
 label zelda_identity_tracking:
-    z "Oh, I think he was a facade for a rich girl wanting to know beforehand what she would like after a full makeover."
+    z "Oh, I would hazard he was a facade for a rich girl wanting to know beforehand what she would like after a full makeover."
 
     d "Do you believe that?"
 
-    z "Not strongly. But as long as I have at least one innocent explanation available, I can accept that kind of job without my conscience ringing too strongly."
+    z "Not really. But as long as I have at least one innocent explanation available, I can accept that kind of job without my conscience ringing too strongly."
 
     d "And what are your less innocent theories?"
 

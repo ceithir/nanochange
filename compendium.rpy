@@ -17,6 +17,7 @@ default mephisto_job_details = False
 default anna_fitting = False
 default outis_journalism = False
 default fairies = False
+default go_rainbow = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -107,9 +108,14 @@ screen notes(who="Outis", what=None):
                                     if what == "perfume":
                                         style "notes_highlight"
                         if know_photo_girl:
-                            text "Was investigating… Phoenix Doors?":
-                                if what == "phoenix":
-                                    style "notes_highlight"
+                            if photo_inconsistency:
+                                text "Was investigating… Phoenix Doors? → Makes no sense?":
+                                    if what == "phoenix":
+                                        style "notes_highlight"
+                            else:
+                                text "Was investigating… Phoenix Doors?":
+                                    if what == "phoenix":
+                                        style "notes_highlight"
                         if know_outis_query and not know_outis_job:
                             text "Was investigating… sloughing?"
 
@@ -230,6 +236,10 @@ screen encyclopedia(what=None, scroll=0.0):
                     if fairies:
                         text "{b}Fairies{/b} Nickname of the common nanobots. A reference to how they were called in the ads for the Enchanted Beauty Mask™, the product for which they were originally created. Following the scandal of the great spread, and the reappropriation of the bots by their new hosts for diverse and unprecedented usages, the appellation has become somewhat ironic.":
                             if what == "fairies":
+                                style "encyclopedia_highlight"
+                    if go_rainbow:
+                        text "{b}Go rainbow{/b} To willingly change one's identity. The idiom conveys the idea that the person both cut all ties with her previous live, and used all means available to craft a new one from a blank page.":
+                            if what == "rainbow":
                                 style "encyclopedia_highlight"
                     if know_outis_job:
                         text "{b}Identity tracker{/b} A private investigator specialized in tracking persons through names', locations' and appearances' changes, often breaching every single privacy law in the process.":
