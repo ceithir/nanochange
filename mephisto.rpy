@@ -335,8 +335,10 @@ label mephisto_latin:
     d """
     So you wouldn't mind telling me what else they've said?
 
-    Cause that doesn't exactly sound like a sentence anyone would naturally utter between {i}Oh, it's so cold today.{/i} and {i}Did you watch the news? The highway is closed down!{/i}.
+    Cause that doesn't exactly sound like a sentence anyone would naturally utter between {i}Oh, it's so cold today{/i} and {i}Did you watch the news? The highway is closed down{/i}.
     """
+
+    show mephisto nervous with dissolve
 
     "Mephisto freezes, suddenly conscious that his newly-found confidence pushed him to make a mistake."
 
@@ -361,10 +363,10 @@ label mephisto_latin:
 
     \"Don't forget your change. {i}And please forget about me once for all.{/i}\"
 
-    \"Keep it as a tip. {i}A tip that I would love to respect your damnatio memoriae, if only you were any good at keeping the charade.{/i}\"
+    \"Keep it as a tip. {i}A tip that I would love to respect your {plain}damnatio memoriae{/plain}, if only you were any good at keeping the charade.{/i}\"
     """
 
-    d "That's rather violent."
+    d "That's brutal."
 
     m "Yeah, I got the idea they know each other, and are not exactly friends."
 
@@ -381,12 +383,16 @@ label mephisto_latin:
     "More silence. I don't push him."
 
     m """
-    It was definitely not a normal addition to a well-brewed coffee. So, even though I hated the guy, that goddamn identity tracker who abused my trust to better blackmail some of my clients, I jumped in.
+    It was definitely not a normal addition to a well-brewed coffee. So, even though I hated the guy, that goddamn identity tracker who abused my trust to better blackmail some of my clients, I jumped in to try to save his life.
 
     But he misinterpreted my gesture, thought I was going to sabotage his new big plan, and didn't let me speak. He wasn't the first time we had fights like that actually.
 
     I then decided the ingrate bastard could go to hell, and abandoned him to his drugged beverage.
+    """
 
+    show mephisto happy with dissolve
+
+    m """
     At that time, I was convinced it was just some sleeping pills, that he was simply going to get robbed.
 
     When I learned he actually died, I panicked. Not having helped technically made me a partner in crime of the murderer.
@@ -394,7 +400,9 @@ label mephisto_latin:
     So, I decided to pretend I knew nothing, heard nothing, saw nothing. Not really a smart move, but anything to escape jail.
     """
 
-    d "Who did it Mephisto?"
+    d "Who did it, Mephisto?"
+
+    show mephisto nervous with dissolve
 
     m "First, I want…"
 
@@ -407,7 +415,7 @@ label mephisto_latin:
 
     With no hesitation, quickly, almost under her victim's nose, just after she sat back at their table.
 
-    Magician-level of dexterity, she dropped the pills from her sleeve into the open cup in an instant.
+    Magician-level of dexterity. She dropped the pills from her sleeve into the open cup in an instant.
     """
 
     jump choose_your_suspect

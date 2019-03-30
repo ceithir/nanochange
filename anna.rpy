@@ -52,7 +52,6 @@ label anna_questions:
             jump anna_scenery
         "I have a peculiar request for you." if know_photo_girl and hint_about_outis_target and not anna_puzzle:
             $ anna_puzzle = True
-            $ vulpem = True
             jump anna_puzzle
         "Damnatio memoriae." if mephisto_confession and not anna_damnatio:
             $ anna_damnatio = True
@@ -398,54 +397,86 @@ label anna_puzzle:
     Could be just a change in self-marketing strategy, switching people under the spotlight to match the trends.
     """
 
-    d "What if I say the person in question switched face entirely?"
+    d "What if I add that the person in question went as far as completely remodeling their face and body?"
 
     a """
-    Don't change anything. Who did not change appearance radically at least one in their life nowadays?
+    Could still be anybody. Who does not change appearance radically at least once in their life nowadays?
 
     Look at you, for example. How do your own mother recognize you?
     """
 
-    d "According to her, I could look like Mona Lisa or The Scream, she would still recognize me all the same cause I'll still be the same stubborn idiot underneath."
+    d "According to her, I could look like the Mona Lisa or the Scream, she would still recognize me all the same cause I'll still be the same stubborn idiot underneath."
+
+    $ vulpem = True
 
     a "Oh, yeah. {i}Vulpem pilum mutat, non mores.{/i}"
 
-    "She let the Latin flow out naturally, with a Italian-sounding accent which you guess is the accurate pronunciation. Then, she almost bit her tongue when quickly switching back to English."
+    show anna nervous with dissolve
+
+    "She let the Latin flow out naturally, with a Italian-sounding accent which you guess is the accurate pronunciation."
+
+    show anna neutral with dissolve
+
+    "Then, she almost bit her tongue when quickly switching back to English."
 
     a "That means {i}the fox changes his fur, not his habits{/i}. There's a similar expression with a scorpion I think."
 
     jump anna_questions
 
 label anna_damnatio:
+    show anna happy with dissolve
+
     a """
     The most terrible sentence of Roman law. To have one's existence utterly removed from history, down to their name.
+    """
 
-    But the term is inappropriate for someone who discarded her identity of her own will. My sister just loves to show off her Latin, even I was always better at it.
+    show anna neutral with dissolve
+
+    a """
+    But the term is inappropriate for someone who discarded her identity of her own will. My sister just loves to show off her Latin, even though I was always better at it.
     """
 
     d "You're not even denying it?"
 
-    a "Unless you speak random Latin phrases to all of your suspects, I guess you know everything at this point."
+    a "Unless you speak random Latin phrases to all your suspects I guess you know everything at this point."
 
-    d "I'm more interested in what you saw and heard that in what you guessed."
+    d "I'm more interested in what you know, saw and heard that in what you guessed."
 
     a """
-    I didn't see her poison Outis with my own eyes, but she flashed me with the pills on the back of her sleeve when she said she was once again going to solve the problem herself while I was too busy fleeing.
+    I didn't see her poison Outis with my own eyes, but she flashed me with the pills, inside a plastic bag taped to the back of her sleeve, when she said she was once again going to solve the problem herself while I was too busy fleeing.
     """
 
     d "And you didn't stop her?"
 
     a """
     The bitch had all power over me at the moment. One phone call to mom, and goodbye freedom.
-
-    For good this time, as I'm pretty sure she managed to put the blame of father's death upon me. The family would just have thrown me in some hole forever, and she would have had her way without any extra interference.
-
-    Let it be clear: She didn't kill a man to protect the new identity of her dear sister. She did it half to protect her name's reputation, half because she is prideful enough to believe she could one hundred-percent do it without being caught.
     """
 
-    d "I can have you registered to the new identity police program if you cooperate. Will be easier than building yet another one from scratch."
+    show anna nervous with dissolve
 
-    a "I have no reason not to at this point. What do you want to know?"
+    a """
+    For good this time, as I'm pretty sure she managed to put the blame of father's death upon me.
+
+    The family would just have thrown me in some hole forever, and she still would have had her way without any extra interference.
+    """
+
+    show anna neutral with dissolve
+
+    a """
+    Let it be clear: She didn't kill a man to protect the new identity of her dear sister.
+
+    She did it half to protect her name's reputation, half because she is prideful enough to believe she could one hundred-percent do it without being caught.
+    """
+
+    d "I can have you registered to the new life police program if you cooperate. Will be easier than building yet another identity from scratch."
+
+    show anna happy with dissolve
+
+    a """
+    I have no reason not to accept at this point.
+
+    What do you want to know?
+    """
 
     d "Everything."
 

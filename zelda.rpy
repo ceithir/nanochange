@@ -49,7 +49,11 @@ label zelda_questions:
         "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not zelda_latin:
             $ zelda_latin = True
             jump zelda_latin
-        "No more questions.":
+        "…" if mephisto_confession and not anna_confession:
+            jump zelda_almost
+        "You're some first-grade manipulative bitch, aren't you Seraphina?" if mephisto_confession and anna_confession:
+                jump grand_finale
+        "No more questions." if not mephisto_confession or not anna_confession:
             jump choose_your_suspect
 
 label zelda_testimony:
@@ -191,12 +195,12 @@ label zelda_mephisto:
     jump zelda_questions
 
 label zelda_truer_conversation:
-    z "You never worked as a freelancer, did you? Client always complains about everything, comparing your work not what he asked, but what he imagined."
+    z "You never worked as a freelancer, did you? Client always complains about everything, comparing your work not to what they asked, but what they imagined."
 
     d """
-    That may be true, but other people's testimonies that particular conversation went far beyond that.
+    That may be true, but we have several testimonies suggesting that particular conversation went far beyond that.
 
-    You talked about plausible deniability before, but it is becoming obvious you were far too involved for that.
+    You talked about plausible deniability before. But as of now it's obvious you were far too involved for that.
     """
 
     "For just one second, she stands silent, weighting her options."
@@ -212,7 +216,7 @@ label zelda_truer_conversation:
 
     One of their owns had been slowly fading away from their official propaganda through time. At first, she was quite prominent in the glossy pictures, then her appearances became scarce and into the background, until she entirely vanished.
 
-    And, according to Outis' expertise, she was showing signs of using some heavy reshaping mod in her last pictures. The changes in her bone structure were quite clear in that regard he said.
+    And, according to Outis' expertise, she was showing signs of using some heavy reshaping mods in her last pictures. The changes in her bone structure were quite clear in that regard he said.
 
     And he was trying to convince me that, from this tenuous lead, he had almost discovered everything that happened, and that, with just a little extra push, he could get a lot of money either from the girl or her family.
 
@@ -224,9 +228,9 @@ label zelda_truer_conversation:
     z """
     Unclear. I think he was trying to get an idea of what the chimera he was chasing looked like at different stages of her life, so he could determine the details of what had happened.
 
-    Honestly, I brand him as a completely delusional, mostly harmless, man. I do not think he would have succeeded at discovering anything money-worthy.
+    Honestly, I branded him as a completely delusional, mostly harmless, man. I do not think he would have succeeded at discovering anything money-worthy.
 
-    But I was still trying to get paid for the work already done, so I needed to keep the conversation going by playing his game, on the surface at least.
+    But I was still trying to get paid for the work already done, so I needed to keep the conversation going by playing his game. On the surface at least.
     """
 
     if know_photo_girl:
@@ -235,11 +239,189 @@ label zelda_truer_conversation:
         jump zelda_questions
 
 label zelda_latin:
-    # Change in expression
-
     z "What?"
 
     d "Just testing a theory."
 
     jump zelda_questions
+
+label zelda_almost:
+    "The lady is not going anywhere, let's hear everyone true testimony before confronting her."
+
+    hide zelda
+    show anna neutral at center with fade
+
+    jump anna_questions
+
+label grand_finale:
+    z "I don't think the law give you the authority to insult me inspector."
+
+    d """
+    Take it as a compliment. It's not everyday I meet someone so good at playing her fellows.
+
+    You had what? About half an hour in a paddy wagon with those two?
+
+    And still you managed to persuade them, with a few touches so subtle the officers didn't even put them in their report, that obstructing the instruction was their better chance to escape this mess in one piece.
+
+    Admittedly, both were already terrified, each for their own reason. But still. Quite impressive.
+    """
+
+    z "I have no idea what…"
+
+    d """
+    Then let's start me with the beginning.
+
+    Several weeks ago, Outis tried to blackmail you.
+
+    He had discovered that your long lost sister, who had disappeared shortly before your father's death, was still alive under a fully reinvented identity.
+
+    He didn't know all the details of your familial affairs, but he did guess rightfully that was something you would rather keep secret.
+
+    His error was to think the only measures you would take would be of monetary nature.
+
+    You managed to have him send you some of his proofs, including the transformation sketches.
+
+    That's when you started to show just how devious you could be.
+
+    You identified the artist, commissioned some sketches of your own, then stole her online identity.
+
+    The last part we can prove. It took some work, but we manage to contact her, and confirm she lost access to her art account several weeks ago.
+    """
+
+    z """
+    Identity theft is a serious crime, one who should not accuse someone of carelessly, especially when your so-called proofs are so weak.
+
+    What if I say I have no idea what you're talking about, but that Outis specifically asked me to imitate the style of the artist he was previously working with?
+    """
+
+    d "I am not sure a jury will be convinced by such a far-fetched explanation."
+
+    z "I don't need them to be convinced of my innocence, just to doubt my culpability enough."
+
+    d """
+    I know you're actually a lawyer, and you enjoy far too much those technicalities, but let's me finish my story before jumping to the trial.
+
+    So, you put on your most colorful wig, and pretending to be the original artist, you contacted Outis and asked for a meeting in the flesh before continuing your collaboration.
+
+    He accepted, and you dutifully prepared the poison.
+
+    You're a prudent woman, with higher than average knowledge of lethal doses due to your past and profession, so I suppose you carefully plan your little mix to kill not too quickly.
+
+    Acting on that hypothesis, we asked every cab companies and assimilated, and finally found that someone had requested a ride for a couple, including a sick man, near the café position, about ten minutes before the time of death.
+
+    The car never came, slowed down by the weather, then blocked by the commotion due to the death, but it's hard to believe it could be for anyone but the murderer and their dying victim.
+
+    You probably planned to have the cab leave you both near a place you could have discretely finished the job and get rid of the body.
+
+    In that plan had worked, at best, we will have discovered Outis was taken out by some mysterious person impersonating an artist. A far too miserable lead to ever catch you.
+
+    Here's come the first straw of bad luck in your perfect plan. Outis was an alcoholic. A well-known fact for every employee and regular of the café but not for you.
+
+    And thus your perfect little plan crumbled when the combination of alcohol and drugs killed him almost instantly.
+
+    You couldn't escape, and you ended up here, under meticulous scrutiny.
+    """
+
+    z """
+    You sure spin a good tale. Now please lay down your proofs.
+
+    I will even help you: I confess to be a con artist.
+
+    When that stupid guy asked for someone able to draw \"in the style of\", I simply commissioned the original artist, then pretended to be the author.
+
+    However, I just wanted to strip him bare of his money. I have no correlation whatsoever with his death.
+    """
+
+    d """
+    That's an interesting defense, but with some basic flaws.
+
+    First, when I asked you to show me the drawings and the original photo, you purposefully put aside the images resembling a bit too much your sister's current look.
+
+    Same thing for the photo. You didn't give me the one Outis sent you, but a random one from your own archives.
+
+    Sadly for you, you picked a easily recognizable student of your elite high school, rendering your lie quite transparent.
+
+    The true artist provided us with the original photo and the missing sketches. They leave no doubt about the fact that Anna was the true target of Outis.
+    """
+
+    z """
+    OK, I panicked. I thought these images were damning evidences of that barista girl's culpability, but I didn't want to be the one who would send her to jail.
+
+    After all, maybe she had good reasons for her actions. Who am I to judge? And Outis sure did not strike me at a nice man.
+
+    But that doesn't prove anything. The most innocents of people do the most stupid things under pressure. And you're quite a pressuring person.
+    """
+
+    d """
+    Indeed. Afraid to lose it all if the truth was revealed, everyone lied in this whole affair. With an impressive consistency actually.
+
+    You did help them quite a lot by coating each of your own speeches, before and after the fact, under a ton of seemingly innocent words, building up a complex illusion upon which they could easily base their own lies.
+
+    But you made some basic mistakes.
+
+    First, you didn't do enough research on the location of your meeting. And you learned the hard way Outis found it very funny to have business talks under his target's nose.
+
+    Of course, in spite of your vivid disguise, Anna recognized you on the spot. {i}Vulpem pilum mutat, non mores.{/i} And you chose badly by not instantly bailing out.
+
+    Instead, you couldn't help but taunt and threaten her, and were so cocky you even showed off the poison to her.
+    """
+
+    z """
+    The word of the most likely culprit against mine? I somehow don't feel like I'm in any danger.
+    """
+
+    d """
+    We also have a direct witness of your crime.
+    """
+
+    z """
+    That's not possible.
+    """
+
+    d """
+    Unless someone did catch a subtle movement of your arm behind the huge back of your chair thanks to its reflection in your nice glasses.
+    """
+
+    z """
+    That's not humanly possible. And you cannot enhance vision beyond a certain threshold even with the latest nanomods.
+    """
+
+    d """
+    That's incorrect. You cannot enhance vision {i}only{/i} with mods. But it's technically feasible. They're even scientific literature on that subject.
+
+    And we did medically confirm the witness had a good enough vision for that impressive feat.
+    """
+
+    z """
+    Is your super witness of good morality?
+    """
+
+    d """
+    Are you miss I-probably-killed-my-father?
+    """
+
+    show zelda nervous with dissolve
+    show zelda neutral with dissolve
+
+    z """
+    Your tale is becoming quite intricate inspector.
+    """
+
+    d """
+    Yeah, that part isn't relevant to the current affair, though don't doubt we will be looking into it before long in light of the new pieces we gathered.
+    """
+
+    d """
+    With two testimonies, a good idea of how you could have pulled it and a motive, I have far enough to put you behind bars for now. The judiciary system will decide of your ultimate fate.
+
+    I just need one small piece to close the case.
+
+    Should I arrest you under the identity of Zelda, mysterious con artist?
+
+    Or would you rather be known as Seraphina Wagon, prestigious lawyer?
+    """
+
+    return
+
+
 
