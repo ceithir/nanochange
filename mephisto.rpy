@@ -2,7 +2,7 @@ define m = Character("Mephisto", who_color="#a8ee49", image="mephisto")
 
 image mephisto neutral = im.Crop("bio-neu.png", (75, 40, 470, 740))
 image mephisto nervous = im.Crop("bio-nerv.png", (75, 40, 470, 740))
-image mephisto happy = im.Crop("bio-nerv.png", (75, 40, 470, 740))
+image mephisto happy = im.Crop("bio-reliev.png", (75, 40, 470, 740))
 
 default mephisto_testimony = False
 default mephisto_job = False
@@ -47,7 +47,6 @@ label mephisto_questions:
             jump mephisto_photo
         "Why did you wait?" if mephisto_false_request and not mephisto_truer_motives:
             $ mephisto_truer_motives = True
-            $ know_mephisto_heard_zelda = True
             jump mephisto_truer_motives
         "{i}Vulpem pilum mutat, non mores.{/i}" if vulpem and not mephisto_latin:
             $ mephisto_latin = True
@@ -144,6 +143,8 @@ label mephisto_job:
 
     if seen_drawings:
         jump identity_tracker_reveal
+    elif know_mephisto_waited:
+        jump mephisto_false_request
     else:
         jump mephisto_questions
 
@@ -275,9 +276,13 @@ label mephisto_truer_motives:
 
     But, yeah, maybe I've heard some bits…
 
-    But you're going to be disappointed. They both were talking like someone else could be listening to them, only alluding to subjects, and never being explicit about them.
+    However, you're going to be disappointed. They both were talking like someone else could be listening to them, only alluding to subjects, and never being explicit about them.
+    """
 
-    However, I think that was more than mere care about privacy. They reminded me of two poker players with a bad hand, each trying to outbluff the other.
+    $ know_mephisto_heard_zelda = True
+
+    m """
+    However, I think that was more than mere care about privacy. They reminded me of two {a=notes:zelda:poker}poker players{/a} with a bad hand, each trying to outbluff the other.
 
     From what I grasped, Outis was insinuating something very strongly. The word {i}reputation{/i} came back a few times.
 
@@ -288,17 +293,27 @@ label mephisto_truer_motives:
     The whole affair smelled of money, but they only broad the subject after their short break to get coffee.
     """
 
-    d "And I thought they never succeeded at coding super-hearing."
+    $ heightened_senses = True
+
+    d "And I thought they never succeeded at coding {a=notes:mephisto:heightened}super-hearing{/a}."
+
+    show mephisto happy with dissolve
 
     m """
     It's not that hard to program the nanomachines to improve the mechanical part of hearing.
-
-    But it takes a lot of tedious training to make your brain properly use your new capacities. Cannot affect the nerves directly after all°, so you have the right reflexes the old way, through repetitions of exercises.
-
-    That's why restoring hearing is easy with the current technology, but making it far better than average never caught on. But a few persons do have it.
     """
 
-    "I do know that, but I let him showing off. A confident suspect is a talkative suspect."
+    show mephisto neutral with dissolve
+
+    $ nanolimits = True
+
+    m """
+    But it takes a lot of tedious training to make your brain properly use your new capacities. {a=def:nanolimits:0.75}Cannot affect the nerves directly{/a} after all, so you have to teach your body the right reflexes the old way, through repetitions of exercises.
+
+    That's why restoring hearing is easy with the current technology, but making it far better than average never caught on.
+    """
+
+    "I do know all that, but I let him show off. A confident suspect is a talkative suspect."
 
     jump mephisto_questions
 

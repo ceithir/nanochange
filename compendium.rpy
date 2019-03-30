@@ -18,6 +18,8 @@ default anna_fitting = False
 default outis_journalism = False
 default fairies = False
 default go_rainbow = False
+default heightened_senses = False
+default nanolimits = False
 
 screen notes(who="Outis", what=None):
     tag compendium
@@ -137,6 +139,10 @@ screen notes(who="Outis", what=None):
                             text "Name: Mephisto"
                             if know_mephisto_job:
                                 text "Occupation: Biohacker."
+                            if heightened_senses:
+                                text "Enhanced senses.":
+                                    if what == "heightened":
+                                        style "notes_highlight"
                             text "Had an altercation with the victim very shortly before his death."
                             if outis_mephisto_acquaintance:
                                 text "Was an acquaintance of the victim.":
@@ -168,6 +174,10 @@ screen notes(who="Outis", what=None):
                             if zelda_wait:
                                 text "Was within reach of the cup during its preparation.":
                                     if what == "counter":
+                                        style "notes_highlight"
+                            if know_mephisto_heard_zelda:
+                                text "Deeper in Outis' schemes that she likes to pretend.":
+                                    if what == "poker":
                                         style "notes_highlight"
 
             textbutton "Close" action Hide("notes") at right
@@ -234,7 +244,7 @@ screen encyclopedia(what=None, scroll=0.0):
                             if what == "bobson":
                                 style "encyclopedia_highlight"
                     if fairies:
-                        text "{b}Fairies{/b} Nickname of the common nanobots. A reference to how they were called in the ads for the Enchanted Beauty Mask™, the product for which they were originally created. Following the scandal of the great spread, and the reappropriation of the bots by their new hosts for diverse and unprecedented usages, the appellation has become somewhat ironic.":
+                        text "{b}Fairies{/b} Nickname of the common nanobots. A reference to how they were called in the ads for the Enchanted Beauty Mask™, the product for which they were originally created. Following the scandal of the Great Spread, and the reappropriation of the bots by their new hosts for diverse and unprecedented usages, the appellation has become somewhat ironic.":
                             if what == "fairies":
                                 style "encyclopedia_highlight"
                     if go_rainbow:
@@ -252,6 +262,10 @@ screen encyclopedia(what=None, scroll=0.0):
                     if alcoholic:
                         text "{b}My body, my business{/b} It is highly illegal (and barely technologically possible) for anyone, police included, to read the memory of other, dead or alive, people's nanomachines to try to determine which program they are or were running. Therefore, even in the context of a criminal investigation, experts can at best hazard prudent educated guesses. See also: Pulcinella Law.":
                             if what == "no_probing":
+                                style "encyclopedia_highlight"
+                    if nanolimits:
+                        text "{b}Nanolaws of robotics{/b} Nickname of a set of instructions engraved deeply into the original \"Fairy\" model of nanobots, designed to be impossible to override and to protect their host against malicious usage. Since more than 99.99% of nanobots in use nowadays are a copy of that original model, due to them having self-replicating endlessly (the \"Great Spread\"), they still pretty much rule the entire biohacking community. They're often symbolically reduce to three commandments: 1. Bots cannot change one's body without the host's consent. 2. Only reversible changes are allowed. 3. The brain and the nervous system cannot be altered directly.":
+                            if what == "nanolimits":
                                 style "encyclopedia_highlight"
                     if pulcinella:
                         text "{b}Pulcinella's Law{/b} Also known as {i}Freedom through hypocrisy{/i} laws. A body of laws allowing anyone to use the nanomachines inside their own body as they see fit without technically breaking the patents of the Bodyfresh™ company. The trick is that having them run a unlicensed program is still illicit on paper, but the law enforces a strict ban on checking the bots' internal memory, making it impossible to prove the misdemeanor, and therefore for trials on those charges to end up with a guilty sentence. The world has been runninng on that absurd compromise for ten years now. See also: My body, my business.":

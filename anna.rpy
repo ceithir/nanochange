@@ -366,7 +366,10 @@ label anna_scenery:
     But today, with so little people, each of them was really standing out, and I would have remember.
     """
 
-    jump anna_questions
+    if heard_mephisto_excuse:
+        jump mephisto_false_request
+    else:
+        jump anna_questions
 
 label anna_puzzle:
     d "I need to identify someone from a family like the Doors, upper upper class stuff, who vanished from public sight a few years ago."

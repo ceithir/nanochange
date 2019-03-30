@@ -111,7 +111,7 @@ default know_photo_girl = False
 default photo_inconsistency = False
 default heard_mephisto_betrayal = False
 default know_mephisto_waited = False
-default heard_mephisto_request = False
+default heard_mephisto_excuse = False
 default mephisto_false_request = False
 default know_mephisto_heard_zelda = False
 default hint_about_outis_target = False
@@ -142,8 +142,6 @@ label choose_your_suspect:
                 jump zelda_introduction
             else:
                 jump zelda_questions
-        "THINK (debug)":
-            jump deductions
 
 menu deductions:
     "Mephisto behavior + Mephisto testimony" if know_mephisto_waited and heard_mephisto_request and not mephisto_false_request:
@@ -191,6 +189,8 @@ label identity_tracker_reveal:
 
     if know_photo_girl:
         jump photo_inconsistency
+    elif know_mephisto_waited and not mephisto_false_request:
+        jump mephisto_false_request
     else:
         jump choose_your_suspect
 
@@ -206,17 +206,23 @@ label photo_inconsistency:
 
     if hint_about_outis_target and not not_a_doors:
         jump not_a_doors
+    elif know_mephisto_waited and not mephisto_false_request:
+        jump mephisto_false_request
     else:
         jump choose_your_suspect
 
 label mephisto_false_request:
+    scene bg black with fade
+
+    $ mephisto_false_request = True
+
     """
     There's obviously something more to Mephisto's little scene.
 
     He claims he just wanted to ask for his money, yet he waited patiently in his own corner while his debtor was alone at his table, before suddenly jumping to his throat just after he got his coffee.
     """
 
-    jump deductions
+    jump choose_your_suspect
 
 label not_a_doors:
     scene bg black with fade
@@ -231,5 +237,8 @@ label not_a_doors:
         Maybe you should ask Anna about this. She seems surprisingly resourceful at identifying persons from the upper class with very little information.
         """
 
-    jump choose_your_suspect
+    if know_mephisto_waited and not mephisto_false_request:
+        jump mephisto_false_request
+    else:
+        jump choose_your_suspect
 
