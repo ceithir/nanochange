@@ -31,6 +31,8 @@ define config.version = "1.0"
 
 define gui.about = _p("""
 Art by {a=https://maimiestoybox.squarespace.com/}Gabicho{/a}. Text and code by {a=https://skarn.itch.io/}Skarn{/a}.
+
+Done for {a=https://itch.io/jam/nanoreno-2019}NaNoRenO 2019{/a}.
 """)
 
 

@@ -421,6 +421,12 @@ label grand_finale:
     Or would you rather be known as Seraphina Wagon, prestigious lawyer?
     """
 
+    window hide
+    scene bg black with fade
+    show text "{size=+10}[config.name]{/size}{vspace=30}[gui.about]"
+
+    $ renpy.pause()
+
     return
 
 
