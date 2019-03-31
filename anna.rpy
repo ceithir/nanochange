@@ -92,13 +92,13 @@ label anna_testimony:
     show anna neutral with dissolve
 
     a """
-    Didn't really check. As I said, the atmosphere was distressed. People took their time, nobody wanted to return into the cold fast.
+    Didn't really check. As I said, the atmosphere was relaxed. People took their time, nobody wanted to return into the cold fast.
     """
 
     $ zelda_wait = True
 
     a"""
-    So, the girl he was with came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and {a=notes:zelda:counter}waited at the counter{/a} while I made both.
+    So the girl who was with him came to take his drink. A new face, never seen her before. She also ordered an extra espresso for herself, and {a=notes:zelda:counter}waited at the counter{/a} while I made both.
 
     She went back to their table with both cups, I went back to dozing off.
 
@@ -106,7 +106,7 @@ label anna_testimony:
 
     They weren't exactly shouting through the whole room, so I didn't understand what they said, but it didn't sound nice.
 
-    It was shortly over though. Mephisto bade out before things escalated too far.
+    It was over quickly though. Mephisto backed out before things went too far.
     """
 
     show anna nervous
@@ -114,7 +114,7 @@ label anna_testimony:
     a """
     And then…
 
-    And then, he collapsed from his chair. Everyone rushed in. He was breathing very badly, suffocating. I tried to help him. Sam, the one in charge that day, called the emergency services, but neither I nor they could do anything.
+    And then, he collapsed from his chair. Everyone rushed in. He was breathing with great difficulties, suffocating. I tried to help him. Sam, the one in charge that day, called the emergency services, but neither I nor they could do anything.
 
     He just died, there, in my arms.
     """
@@ -141,11 +141,11 @@ label anna_outis:
     $ outis_mephisto_acquaintance = True
 
     a """
-    Often, he'll just drink it quickly. Sometimes, he would go for a quick {a=notes:mephisto:acquaintance}chat with Mephisto{/a}.
+    Often, he would just drink it and then be on his way. Sometimes, he would go for a quick {a=notes:mephisto:acquaintance}chat with Mephisto{/a}.
 
     Mephisto is that guy who's so often there we start worrying about his well-being when he doesn't show up for a few days.
 
-    As for the elephant into the room… Yeah, the guy clearly had a problem with alcohol. He was more often than not smelling of it.
+    As for the elephant in the room… Yeah, the guy clearly had a problem with alcohol. More often than not, he was reeking of it.
 
     Never actually ordered anything alcoholic in the café though. I think he was trying to hide his addiction.
     """
@@ -177,7 +177,7 @@ label anna_zelda:
 
     d "The girl that was with Outis."
 
-    a "Today was the first time I've seen her."
+    a "Today was the first time I'd ever seen her."
 
     d "Well, then tell me what you've learned about her today."
 
@@ -197,20 +197,20 @@ label anna_zelda:
 
 label anna_mephisto:
     a """
-    Mephisto is not there everyday, but it's as if.
+    Mephisto's not there everyday, but close enough.
 
     I think the café is more or less his public office. Some people come just to speak to him.
     """
 
-    d "Which kind of people?"
+    d "What kind of people?"
 
     a """
     Of all kinds actually. He's got quite the varied following. People of all ages, genders, colors.
 
-    Though, thinking about it, I never saw anyone which looked like they had difficult ends of months discuss with him for long.
+    Now that I think about it though, the people who have long discussions with him never seem like the type that has trouble making ends meet.
     """
 
-    d "And for which reason was he that popular with the {i}bourgeoisie{/i}?"
+    d "And for what reason was he that popular with the {i}bourgeoisie{/i}?"
 
     show anna nervous
 
@@ -259,9 +259,9 @@ label anna_mephisto:
     $ mephisto_aggressive = True
 
     a """
-    I remember finding very {a=notes:mephisto:aggressive}strange that he went to talk to Outis{/a}. Normally, he lets people come to him, and never meddle with the other tables.
+    I remember finding it very {a=notes:mephisto:aggressive}strange that he went to talk to Outis{/a}. Normally, he lets people come to him, and never meddles with the other customers.
 
-    And I found even stranger that he left immediately after. Usually, he stays in most of the day.
+    What I found even stranger is that he left immediately after. Usually, he stays in most of the day.
     """
 
     d "You're suspecting him, ain't you?"
@@ -336,9 +336,9 @@ label anna_scenery:
     a """
     I was behind the counter.
 
-    Zelda en route to hers and Outis' table.
+    Zelda en route to her and Outis' table.
 
-    Outis and Mephisto were both seated at their usual positions, just a few steps away, each minding his own business.
+    Outis and Mephisto were both seated at their usual spots, just a few steps away, each minding his own business.
     """
 
     d "OK. How did those position evolve from that moment?"
@@ -346,7 +346,7 @@ label anna_scenery:
     a """
     Mine didn't. Zelda sat at her table. Then Mephisto rose and closed the distance to Outis.
 
-    Not a minute later, he went out, almost in a straight line, with just a minimal detour to grab his stuff.
+    Not a minute later he left, almost in a straight line, with just a minimal detour to grab his stuff.
     """
 
     show anna nervous with dissolve
@@ -360,9 +360,9 @@ label anna_scenery:
     show anna neutral with dissolve
 
     a """
-    No. If that had been an usual day, I wouldn't be able to say that for sure: there's always someone else waiting at the bar on in the alleys.
+    No. If that had been an usual day, I wouldn't be able to say that for sure: there's always someone else waiting at the bar or in the alleys.
 
-    But today, with so little people, each of them was really standing out, and I would have remember.
+    But today, there were so few people that each of them was really standing out. I would remember.
     """
 
     if heard_mephisto_excuse:
