@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("nanochange")
+define config.name = _("Nanochange")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,6 +30,7 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Art by {a=https://maimiestoybox.squarespace.com/}Gabicho{/a}. Text and code by {a=https://skarn.itch.io/}Skarn{/a}.
 """)
 
 
