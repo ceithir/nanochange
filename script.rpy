@@ -9,12 +9,12 @@ image side devil relaxed = im.FactorScale(im.Flip(im.Crop("dem-inq.png", (45, 65
 
 label start:
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
-    o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be there today actually."
+    o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be here today, actually."
     d "That means I'm going to get all the worst cases, ain't I?"
     o "Indeed. First-degree murder. Here's the file. The suspects are already waiting for you in the interrogation room."
-    d "Have pity of me and make them wait 10 more minutes, time to read that and get a coffee."
+    d "Have mercy on me and make them wait for ten more minutes, so I can read this and get some coffee."
 
-    "The officer agrees, but I'm sadly forced to renounce to the second part of the plan. The old-school percolator is empty and I don't have enough time to prepare a new batch of hot liquid energy."
+    "The officer agrees, but sadly, I'm forced to give up on the second half of my plan. The old-school percolator is empty and I don't have enough time to prepare a new batch of hot liquid energy."
     "To add insult to my withdrawal symptoms, today's affair is coffee related. As in, someone got killed in a coffee shop."
 
     window hide
@@ -28,7 +28,7 @@ label start:
     nvl_narrator """
     {a=notes:outis:name}Some guy{/a}, not formally identified yet (only {a=def:anonymous_id}anonymous id{/a} on him), died from ingesting a coffee spiced with a {a=notes:outis:poison}high quantity of common medical drugs{/a}.
 
-    \"Poor man's poison\" as the coroner called it: Anything you can usually found in a medicine cupboard mixed together at once.
+    \"Poor man's poison\", the coroner calls it: a mix of everything you're likely to find inside of a medicine cupboard.
     """
 
     $ quick_death = True
@@ -40,7 +40,7 @@ label start:
     $ alcoholic = True
 
     nvl_narrator """
-    Analysis of the liver seems to indicate the victim was a {a=notes:outis:alcoholic}alcoholic{/a}. {a=def:no_probing}Probable{/a} use of a {a=notes:outis:mod}heavy hepatic-support program{/a}, and therefore of {a=def:mod_limit}few or none other programs{/a}.
+    Analysis of the liver seems to indicate the victim was a {a=notes:outis:alcoholic}alcoholic{/a}. {a=def:no_probing}Probable{/a} use of a {a=notes:outis:mod}heavy hepatic-support program{/a}, and therefore of {a=def:mod_limit}few or no other programs{/a}.
 
     {clear}
 
@@ -58,15 +58,15 @@ label start:
     nvl_narrator """
     However, the victim didn't go to the counter himself to fetch the drink. Instead, it was the woman he was sharing a table with (identifier: {a=notes:zelda}Zelda{/a}) who got it, and brought it back alongside her own order.
 
-    She could have slip the drug on her way, or even back at the table, while the man was looking elsewhere.
+    She could have poured the drugs in the cup while on her way, or even back at the table, while the man was looking elsewhere.
 
     {clear}
 
     According to several different witnesses (two other employees and a bored regular waiting for someone late), another man also went to the victim's table shortly after the deadly coffee was delivered.
 
-    They had a short but lively conversation, then this person left the restaurant. A short window of opportunity, but a clearly existing one.
+    They had a short but lively conversation, then that person left the restaurant. A short window of opportunity, but a clearly existing one.
 
-    Those three are supposedly the only ones who got close enough of the cup between the time it was prepared and its consumption, so my dear colleagues have decided to focus all of their attention on them.
+    Those three are supposedly the only ones who got close enough to the cup between the time it was prepared and its consumption, so my dear colleagues have decided to focus all of their attention on them.
 
     And, indeed, since no trace of poison was found anywhere else in the restaurant, except for a small, anonymous plastic bag lying on the floor that anyone could have thrown there during the confusion following the death, the logical razor would have that one of them is the culprit.
 
@@ -74,13 +74,13 @@ label start:
 
     {clear}
 
-    Anna and Zelda have already been interrogated one time, through superficially, alongside every other present at the shop when the cops came in. They were then escorted here for a more thorough investigation.
+    Anna and Zelda have already been interrogated, though superficially, along with everyone else who was present in the shop when the cops came in. They were then escorted here for a more thorough investigation.
     """
 
     $ mephisto_suspect = True
 
     nvl_narrator """
-    The mysterious man, {a=def:name}known{/a} as {a=notes:mephisto}Mephisto{/a}, is a faithful customer, and someone in the staff had his number. He has answered positively to the gentle but firm request to come at the station for questioning.
+    The mysterious man, {a=def:name}known{/a} as {a=notes:mephisto}Mephisto{/a}, is a faithful customer, and someone in the staff had his number. He has consented to the gentle yet firm request that he come to the station for questioning.
     """
 
     nvl hide dissolve
