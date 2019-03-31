@@ -323,7 +323,7 @@ init python:
             renpy.show_screen("encyclopedia", what, scroll)
             renpy.restart_interaction()
         else:
-            return hyperlink_clicked(target)
+            return hyperlink_function(target)
 
     style.default.hyperlink_functions = (new_hyperlink_styler, new_hyperlink_clicked, new_hyperlink_hovered)
 
