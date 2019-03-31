@@ -296,9 +296,6 @@ init python:
     def new_hyperlink_styler(target):
         return hyperlink_styler(target)
 
-    def new_hyperlink_hovered(target):
-        return None
-
     def new_hyperlink_clicked(target):
         if target.startswith("notes"):
             globals()["new_notes"] = False
@@ -325,5 +322,5 @@ init python:
         else:
             return hyperlink_function(target)
 
-    style.default.hyperlink_functions = (new_hyperlink_styler, new_hyperlink_clicked, new_hyperlink_hovered)
+    style.default.hyperlink_functions = (new_hyperlink_styler, new_hyperlink_clicked, None)
 
