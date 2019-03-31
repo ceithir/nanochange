@@ -17,7 +17,7 @@ label zelda_introduction:
 
     "Zelda."
 
-    "The wild card of this story. Nobody admits of knowing her, and she was quite close to the victim when he died."
+    "The wild card of this story. Nobody admits to knowing her and she was quite close to the victim when he died."
 
     jump zelda_questions
 
@@ -31,7 +31,7 @@ label zelda_questions:
         "Did you notice anything unusual with the staff?" if zelda_testimony and not zelda_anna:
             $ zelda_anna = True
             jump zelda_anna
-        "Let's focus on the person who disturbs your conversation." if zelda_testimony and not zelda_mephisto:
+        "Let's focus on the man who disturbed your conversation." if zelda_testimony and not zelda_mephisto:
             $ zelda_mephisto = True
             $ heard_mephisto_betrayal = True
             jump zelda_mephisto
@@ -72,15 +72,15 @@ label zelda_testimony:
     z """
     He {a=notes:zelda:portrait}wanted a realistic portrait{/a}. Not necessarily my forte, but I wasn't going to refuse a paid gig.
 
-    As his requirements were complex, and we were living in the same city, I agreed, perhaps foolishly, to meet him face to face to discuss the matter further.
+    His requirements were complex, and since we lived in the same city, I agreed I agreed, perhaps foolishly, to meet him face to face to discuss the matter further.
 
     Fast forward to this morning. I'm early, he's not, I'm getting some paperwork done while enjoying a cup of coffee.
 
-    Finally, he comes in, salutes me, orders a coffee, and we get to talk about his project.
+    Finally, he comes in, greets me, orders a coffee, and we get to talk about his project.
 
     Soon, his coffee is ready, I go fetch it, and a new one for myself while I'm at it.
 
-    I'm barely back that another customer walks straight to us, and starts arguing crassly with Outis. He answers similarly, and the man runs away in rage.
+    I've only just returned to our table when another customer walks straight toward us and starts arguing crassly with Outis. He answers similarly, and the man runs away in rage.
     """
 
     show zelda disturbed with dissolve
@@ -88,11 +88,11 @@ label zelda_testimony:
     z """
     I'll never know what this was all about, as Outis then drank his coffee, and Hell's gates opened.
 
-    I guess you already saw men dying in your line of duty. Me never before this day. That was even more horrible than anything I could have imagined.
+    I guess you've already seen men dying, in your line of duty. But I never had before today. That was even more horrible than anything I could have imagined.
 
-    He looked sick, then in pain, then he felt from his seat. People tried to help him, but life just slowly exited his body a bit more with each passing instant.
+    He looked sick, then in pain then he fell from his seat. People tried to help him, but life just wouldn't stop leaving his body, a bit more with each passing moment.
 
-    I cannot describe it with words. I haven't known this man for more than a few minutes, so I didn't really feel grief.
+    I cannot describe it with words. I hadn't known that man for more than a few minutes, so I didn't really feel grief.
 
     But the swiftness with which death took him away… That's some terrifying shit for sure.
     """
@@ -182,7 +182,7 @@ label zelda_mephisto:
 
     d "What did he say exactly?"
 
-    z "An incoherent litany of bad words. I'm not sure even him was understanding what he was trying to say."
+    z "An incoherent litany of bad words. I'm not sure even he understood what he was trying to say."
 
     d "And how did Outis react?"
 

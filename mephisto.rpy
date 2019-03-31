@@ -18,7 +18,7 @@ label mephisto_introduction:
 
     "Mephisto."
 
-    "Tries to give himself a style, from poor naming sense to a slightly shady look. Has no chance to win at that game against {i}me{/i}."
+    "Trying way too hard to look cool, from poor naming sense to a slightly shady style. Has no chance to win at that game against {i}me{/i}."
 
     jump mephisto_questions
 
@@ -67,14 +67,14 @@ label mephisto_testimony:
     $ mephisto_outis_money = True
 
     m """
-    This guy, {a=notes:outis:name}Outis{/a}, {a=notes:mephisto:outis_debt}was owing me money{/a} and has been avoiding me as of late.
+    This guy, {a=notes:outis:name}Outis{/a}, {a=notes:mephisto:outis_debt}owed me money{/a} and had been avoiding me as of late.
 
     Since he was there for once, I took the opportunity to ask for my cash. When he tried to play dumb, I just ragequitted.
     """
 
-    d "How much was he owing you?"
+    d "How much did he owe you?"
 
-    "Not much. That was more for the principle of the thing."
+    "Not much. That was more the principle of the thing."
 
     jump mephisto_questions
 
@@ -191,7 +191,7 @@ label mephisto_outis:
     $ outis_journalism = True
 
     m """
-    {a=notes:outis:job}Journalism or research{/a} I guess. I remember him conducting interviews more than once. But I didn't hear enough of these conversations to grasp their subjects, and I didn't pry.
+    {a=notes:outis:job}Journalism or research{/a} I guess. I remember him conducting interviews more than once. But I didn't hear enough of those conversations to grasp their subjects, and I didn't pry.
     """
 
     d "Anything else you can remember? Any remarkable habit for instance?"
@@ -217,7 +217,7 @@ label mephisto_anna:
 
     I haven't interacted much with her, but from what I've seen, she's basically average.
 
-    I was already a regular when she got hired. That was about two years ago I would say. Does this job cause it pays at least part of the bills, and does it well enough, but it's no really a lifelong passion of her.
+    I was already a regular when she got hired. That was about two years ago I would say. Does this job cause it pays at least part of the bills, and does it well enough, but it's hardly her life's passion.
 
     She's also often there when I'm at the café. I guess that's her main gig.
     """
@@ -233,7 +233,7 @@ label mephisto_anna:
 
     For example, I once overheard a conversation between her and several of her colleagues where she was pretending to know about some popular band from ten years ago when it was painfully obvious she had no idea who they were.
 
-    Likewise, she used to occasionally employ some pretty uncommon Latin idioms, then turn red as if she had said something terrible when someone raised an eyebrow in surprise. She's updated her speech pattern to get ride of them entirely since.
+    Likewise, she used to occasionally employ some pretty uncommon Latin idioms, then turn red as if she had said something terrible when someone raised an eyebrow in surprise. She's updated her speech pattern to get rid of them entirely since then.
     """
 
     d "You're quite observant aren't you?"
