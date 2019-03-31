@@ -8,6 +8,11 @@ image side devil = im.FactorScale(im.Flip(im.Crop("dem-neu.png", (45, 65, 510, 7
 image side devil relaxed = im.FactorScale(im.Flip(im.Crop("dem-inq.png", (45, 65, 510, 735)), horizontal=True), 0.5)
 
 label start:
+    scene bg black
+
+    $ renpy.music.set_volume(0.25)
+    play music "<from 0 to 53.0>audio/GarsuMene_-_Questions_Linger__noir__crime__detective__investigative__0_57_.ogg"
+
     d "Late, sorry. Traffic was a nightmare. Snow everywhere, the highway closed…"
     o "Yeah, yeah, we know, same for everyone. You're the only senior officer who happens to be here today, actually."
     d "That means I'm going to get all the worst cases, ain't I?"

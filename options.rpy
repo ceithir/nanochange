@@ -32,6 +32,8 @@ define config.version = "1.0"
 define gui.about = _p("""
 Art by {a=https://maimiestoybox.squarespace.com/}Gabicho{/a}. Text and code by {a=https://skarn.itch.io/}Skarn{/a}.
 
+Tracks: {a=https://www.jamendo.com/track/1458678/detective-story}Detective story{/a}, {a=https://www.jamendo.com/track/1301703/questions-linger-noir-crime-detective-investigative-0-57}Questions Linger: noir, crime, detective, investigative{/a}
+
 Done for {a=https://itch.io/jam/nanoreno-2019}NaNoRenO 2019{/a}.
 """)
 
@@ -48,9 +50,9 @@ define build.name = "nanochange"
 ## These three variables control which mixers are shown to the player by
 ## default. Setting one of these to False will hide the appropriate mixer.
 
-define config.has_sound = True
+define config.has_sound = False
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -64,7 +66,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "audio/R.Mingabitov_-_Detective_story.ogg"
 
 
 ## Transitions #################################################################
